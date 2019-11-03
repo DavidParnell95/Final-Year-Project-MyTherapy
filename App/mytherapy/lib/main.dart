@@ -7,6 +7,8 @@ void main()
 
 class HomePage extends StatelssWidget
 {
+  IconColor = Colors.white;
+
   @override
   Widget build(BuildContext context)
   {
@@ -20,9 +22,18 @@ class HomePage extends StatelssWidget
         mainAxisSpacing: 4.0,
         crossAxisSpacing: 4,0,
 
-        children: <String>[
-          addButton();//Button 1
-          //Button 2
+        children: <Button>[
+          child: IconButton(
+            iconSize: 32.0,
+            icon: icon: Icon(Icons.book),
+            tooltip: 'View Entries',
+          ),//Button 1
+          child: IconButton(
+            iconSize: 32.0,
+            icon: Icon(Icons.note_add,
+                color: IconColor),
+            tooltip: 'Add Entry'
+          ),
           //Button 3
           //Button 4
         ].map(()
