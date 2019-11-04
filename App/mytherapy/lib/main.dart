@@ -5,44 +5,56 @@ void main()
   runApp(new HomePage());
 }
 
-class HomePage extends StatelssWidget
+//*****  Home Page  *****
+class HomePage extends StatelessWidget
 {
-  IconColor = Colors.white;
-
   @override
   Widget build(BuildContext context)
   {
-    return new Container(
-      color: Colors.white30,
-      child: new GridView.count(
-
-        crossAxisCount: 2,//2 across
-        childAspectRatio: 1.0,
-        padding: const EdgeInsets.all(4.0),
-        mainAxisSpacing: 4.0,
-        crossAxisSpacing: 4,0,
-
-        children: <Button>[
-          child: IconButton(
-            iconSize: 32.0,
-            icon: icon: Icon(Icons.book),
-            tooltip: 'View Entries',
-          ),//Button 1
-          child: IconButton(
-            iconSize: 32.0,
-            icon: Icon(Icons.note_add,
-                color: IconColor),
-            tooltip: 'Add Entry'
-          ),
-          //Button 3
-          //Button 4
-        ].map(()
-        {
-          return new GridTile(
-            child: new Image.network(url, fit: BoxFit.cover);
-          )
-        }).toList()),
-      );
-    )
+    return ListView(
+      padding: EdgeInsets.all(16.0),
+      children: <Widget>[
+        Column(
+          children: <Widget>[
+            RaisedButton(
+              child: Text("View Entries"),
+              onPressed: () {
+                Navigator.push(context, viewEntries());
+              }
+            ),
+          ],
+        ),
+      ],
+    );
   }
+}
+
+/***** View Entry page *****
+ * View contents of firebase database
+
+ **************************/
+class viewEntries extends MaterialPageRoute<Null>
+{
+  FloatingActionButtonLocation _fabLocation = FloatingActionButtonLocation.endDocked;
+  bool _isFabMini = false;
+
+  viewEntries()
+      : super(builder: (BuildContext context){
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('Entries'),
+            elevation: 1.0,
+          ),
+
+          body: Builder(
+            floatingActionButton: FloatingActionButton(
+              child: Icon(Icons.navigation),
+              mini: this._isFabMini,
+              onPressed: (){
+
+              },
+            ),
+          ),
+        );
+    });
 }
