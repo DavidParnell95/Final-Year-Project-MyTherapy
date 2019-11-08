@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mytherapy/addEntry.dart';
+import 'package:mytherapy/viewEntry.dart';
 
 void main()
 {
@@ -11,50 +13,37 @@ class HomePage extends StatelessWidget
   @override
   Widget build(BuildContext context)
   {
-    return ListView(
-      padding: EdgeInsets.all(16.0),
-      children: <Widget>[
-        Column(
-          children: <Widget>[
-            RaisedButton(
-              child: Text("View Entries"),
-              onPressed: () {
-                Navigator.push(context, viewEntries());
-              }
-            ),
-          ],
+    final _showSnack= () => Scaffold.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Under Construction'),
+        duration: Duration(milliseconds: 500),
+      ),
+    );
+
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          //Home Page Title
+          title: Text("MyTherapy", textAlign:  TextAlign.center),
         ),
-      ],
+
+        body: Column(children: <Widget>[
+          RaisedButton(
+            child: Text("View Entries"),
+            onPressed: ViewEntry(),
+          ),
+          RaisedButton(
+            child: Text("Add Entry"),
+            onPressed: AddEntry(),
+          ),
+          RaisedButton(
+            child: Text("Settings"),
+            onPressed: _showSnack,
+          )
+        ],
+        ),
+      )
     );
   }
 }
 
-/***** View Entry page *****
- * View contents of firebase database
-
- **************************/
-class viewEntries extends MaterialPageRoute<Null>
-{
-  FloatingActionButtonLocation _fabLocation = FloatingActionButtonLocation.endDocked;
-  bool _isFabMini = false;
-
-  viewEntries()
-      : super(builder: (BuildContext context){
-        return Scaffold(
-          appBar: AppBar(
-            title: Text('Entries'),
-            elevation: 1.0,
-          ),
-
-          body: Builder(
-            floatingActionButton: FloatingActionButton(
-              child: Icon(Icons.navigation),
-              mini: this._isFabMini,
-              onPressed: (){
-
-              },
-            ),
-          ),
-        );
-    });
-}
