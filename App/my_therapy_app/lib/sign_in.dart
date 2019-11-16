@@ -11,6 +11,11 @@ class _SignInState extends State<SignIn>
 {
 
   final AuthService _authAnon = AuthService();
+
+  //Text Field state
+  String email ='';
+  String password ='';
+
   @override
   Widget build(BuildContext context) {
 
@@ -22,22 +27,34 @@ class _SignInState extends State<SignIn>
 
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-        child: RaisedButton(
-          child: Text('Sign in Anon'),
-          onPressed: () async{
-            dynamic SignInResult = await _authAnon.signInAnon();
-
-            //Check if sign in was successful
-            //SIGN NOT SUCCESSFUL
-            if(SignInResult == null)
-            {
-                print('Error signing in');
-            }
-            // SIGN IN SUCCESSFUL
-            else{
-              print(SignInResult.uid + '  signed in');
-            }
-          },
+        child: Form(
+          child: Column(
+            children: <Widget>[
+              SizedBox(height: 20.0,),
+              TextFormField(
+                //Every time typed into, value gotten
+                onChanged: (val){
+                  setState(() => email = val);
+                },
+              ),
+              SizedBox(height: 20.0,),
+              TextFormField(
+                obscureText: true,//Hide password
+                onChanged: (val)
+                {
+                  setState(() => password = val);
+                },
+              ),
+              SizedBox(height: 20.0),
+              RaisedButton(
+                child: Text('Sign In'),
+                onPressed: () async{
+                  print(email);
+                  print(password);
+                },
+              )
+            ],
+          ),
         ),
       ),
     );

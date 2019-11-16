@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_therapy_app/Models/user.dart';
+import 'package:my_therapy_app/Services/auth.dart';
 
 class AuthService{
 
@@ -38,4 +39,14 @@ class AuthService{
   //Apply
 
   //Log out
+Future signOut() async{
+    try{
+      return await _auth.signOut();
+    }
+    catch(e)
+  {
+    print(e.toString());
+    return null;
+  }
+}
 }

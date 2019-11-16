@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:my_therapy_app/Services/auth.dart';
 import 'package:my_therapy_app/add_entry.dart';
 import 'package:my_therapy_app/view_entry.dart';
 
 //*****  Home Page  *****
 class HomePage extends StatelessWidget
 {
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context)
   {
@@ -23,21 +26,32 @@ class HomePage extends StatelessWidget
           ),
 
           body: Column(children: <Widget>[
+
             RaisedButton(
               child: Text("View Entries"),
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => ViewEntry()));
               },
             ),
+
             RaisedButton(
               child: Text("Add Entry"),
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => AddEntry()));
               },
             ),
+
             RaisedButton(
               child: Text("Settings"),
               onPressed: _showSnack,
+            ),
+
+            RaisedButton(
+              child: Text("Log Out"),
+              onPressed: () async{
+                await _auth.signOut();
+              },
+
             )
           ],
           ),
