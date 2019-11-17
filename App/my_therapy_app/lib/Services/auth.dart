@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_therapy_app/Models/user.dart';
-import 'package:my_therapy_app/Services/auth.dart';
 
 class AuthService{
 
@@ -37,6 +36,22 @@ class AuthService{
   //Email & Password sign in
 
   //Apply
+  Future registerAdmin(String email,
+      String name, String institution,
+      String password ) async{
+    try{
+      AuthResult result = await _auth.createUserWithEmailAndPassword(
+        email: email, password: password);
+
+      FirebaseUser user = result.user;
+      return _userFromFirebaseUser(user);
+    }
+    catch (e)
+    {
+      print(e.toString());
+      return null;
+    }
+  }
 
   //Log out
 Future signOut() async{
