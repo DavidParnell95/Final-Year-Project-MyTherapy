@@ -5,25 +5,35 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="MyTherapyStyle.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-	<div class = "NavigationBar">
+	<div class = "col-sm-12">
 		<ul>
+			<li><a href= "Home.html"><i class="fa fa-fw fa-home"></i>Home</a></li>
 			<li><a class="active" href="#FormPage">Add Entry</a></li>
 			<li><a href="#ViewEntries">View Entries</a></li>
+			<li><a href="Settings.html">Settings</a><li>
+			<li><a href="#"><i class="fa fa-fw fa-user"></i>Log Out</a></li>
 		</ul>
 	<!-- End Nav Bar--> 	
 	</div> 
 	
 	<div class="row">
 		<div class="col-sm-4">
+			<div class="sidebar">
+			</div>
 		</div>
 		
-		<div class="col-sm-4">
+		<div class="col-sm-8">
 			<form class = "NewEntry" action="">
-				Date: 
-				<input type="text" name = "Name">
+				<p>Date: <span id="datetime"></span></p>
+				<script>
+					var dt = new Date();
+					document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+				</script>
+				
 				<br>
 				SUDs:
 				<select name="suds">
@@ -45,34 +55,7 @@
 				<input type="submit" value="Submit">
 			</form>
 		</div>
-		
-		<div class="col-sm-4">
-		</div>
 	<!-- End Row -->
 	</div>
-	
-	<!-- The core Firebase JS SDK is always required and must be listed first -->
-	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
-
-	<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-analytics.js"></script>
-
-	<script>
-	// Your web app's Firebase configuration
-	var firebaseConfig = {
-		apiKey: "AIzaSyA0gpT-psrA1oaXFmp6V4snnjWsg4xIx8w",
-		authDomain: "mytherapy-8776f.firebaseapp.com",
-		databaseURL: "https://mytherapy-8776f.firebaseio.com",
-		projectId: "mytherapy-8776f",
-		storageBucket: "mytherapy-8776f.appspot.com",
-		messagingSenderId: "976009179852",
-		appId: "1:976009179852:web:dec8630a2c7782e2f5c869",
-		measurementId: "G-RT4VGFYJZH"
-	};
-	// Initialize Firebase
-	firebase.initializeApp(firebaseConfig);
-	firebase.analytics();
-	</script>
 </body>
 </html>

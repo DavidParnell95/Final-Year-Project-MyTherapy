@@ -1,0 +1,13 @@
+{
+    "name": "david/website",
+    "description": "Final Year Project Website",
+    "authors": [
+        {
+            "name": "Davidparnell",
+            "email": "davidparnell1995@gmail.com"
+        }
+    ],
+    "require": {
+        "kreait/firebase-php": "^4.15.1"
+    }
+}
