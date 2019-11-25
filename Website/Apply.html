@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="Apply">
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="MyTherapyStyle.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+        <div class = "col-sm-12">
+            <ul>
+                 <!-- Shown to logged in users-->
+                <!-- Home button-->
+                <li class="logged-in">
+                    <a class="active" data-target="modal-account">Home</a>
+                </li>
+
+                <!-- View Entries-->
+                <li class="logged-in">
+                    <a href="ViewEntries.html">View Entries</a>
+                </li>
+
+                <!-- Add Entry-->
+                <li class="logged-in">
+                    <a href="AddEntry.html">Add Entry</a>
+                </li>
+        
+                <!-- Log out -->
+                <li class="logged-in">
+                    <a href="#"id="logout">Logout</a>
+                </li>
+        
+                <!-- Shown to users that are not logged in-->
+                <!-- Log In -->
+                <li class="logged-out">
+                    <a href="#" class="modal-trigger" data-target="modal-login">Login</a>
+                </li>
+        
+                <!-- Apply -->
+                <li class="logged-out">
+                    <a href="Apply.html">Apply</a>
+                </li>
+            </ul>    
+        <!-- End Nav Bar--> 	
+        </div> 
+        
+        <!-- LOGIN MODAL -->
+        <div id="modal-login" class="modal">
+            <div class="modal-content">
+              <h4>Login</h4><br />
+        
+              <!-- Form to allow user sign in-->
+                <form id="login-form">
+                    <!-- Email input -->
+                    <div class="input-field">
+                    <input type="email" id="login-email" required />
+                    <label for="login-email">Email address</label>
+                    </div>
+        
+                    <!-- Password input-->
+                    <div class="input-field">
+                    <input type="password" id="login-password" required />
+                      <label for="login-password">Your password</label>
+                    </div>
+                    <button class="btn yellow darken-2 z-depth-0">Login</button>
+                </form>
+            </div>
+        </div>
+
+    <!-- Page Content-->
+	<div class="row">
+
+            <!-- Left Sidebar-->
+            <div class="col-sm-4">
+                <div class="sidebar">
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                
+            </div>
+        
+
+
+</body>
+</html>
