@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "976009179852",
+    "firebase_url": "https://mytherapy-8776f.firebaseio.com",
+    "project_id": "mytherapy-8776f",
+    "storage_bucket": "mytherapy-8776f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976009179852:android:8b42be0a95ad0774f5c869",
+        "android_client_info": {
+          "package_name": "com.example.my_therapy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976009179852-cuo1mal1je58isbee2uiu1r7b4j4mfi1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsSA3KXPdGElmVXRDvB8AJopdGssCS2VE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976009179852-cuo1mal1je58isbee2uiu1r7b4j4mfi1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "976009179852-jc5aims8hqqrgl417r9je5dcqabdbj84.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mytherapy"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
