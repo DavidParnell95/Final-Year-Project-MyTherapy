@@ -8,6 +8,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:my_therapy/Models/user.dart';
+import 'package:my_therapy/Services/database.dart';
 
 class AuthService
 {
@@ -69,16 +70,16 @@ class AuthService
 
   //Register
   Future registerWithEmailAndPassword(String email, String password) async {
-
-    try
-    {
+    try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       FirebaseUser user = result.user;
+      // create a new document for the user with the uid
+      await DatabaseService(uid: user.uid).updateUserData('0','new member', 10);
+
       return _userFromFirebaseUser(user);
     }
 
-    catch(error)
-    {
+    catch (error) {
       print(error.toString());
       return null;
     }
