@@ -42,15 +42,15 @@ class _SignInState extends State<SignIn>
     return loading ? Loading() : Scaffold(
       appBar: AppBar(
         title: Text('Sign In',
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: textColor),
         ),
 
         actions: <Widget>[
 
           //switch to register
           FlatButton.icon(
-              icon: Icon(Icons.person),
-              label: Text('Register'),
+              icon: Icon(Icons.person, color: textColor),
+              label: Text('Register',style: TextStyle(color: textColor)),
               onPressed: () =>widget.toggleView(),
           )
         ],
@@ -99,10 +99,10 @@ class _SignInState extends State<SignIn>
               //Log in button
               SizedBox(height: 20.0),
               RaisedButton(
-                color: Colors.lightBlue,
+                color: buttonColor,
                 child: Text(
                   "Sign In",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: textColor),
                 ),
                 onPressed: () async{
 

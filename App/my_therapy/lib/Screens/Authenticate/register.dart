@@ -42,8 +42,8 @@ class _RegisterState extends State<Register>
 
           //switch to sign in
           FlatButton.icon(
-            icon: Icon(Icons.person),
-            label: Text('Sign In'),
+            icon: Icon(Icons.person,color: textColor),
+            label: Text('Sign In', style: TextStyle(color: textColor)),
             onPressed: ()=> widget.toggleView(),
           ),
         ],
@@ -103,7 +103,7 @@ class _RegisterState extends State<Register>
                 color: Colors.lightBlue,
                 child: Text(
                   'Register',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: textColor),
                 ),
                 onPressed: () async{
 
