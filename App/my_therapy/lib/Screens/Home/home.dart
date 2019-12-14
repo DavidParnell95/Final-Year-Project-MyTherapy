@@ -13,7 +13,7 @@ class Home extends StatelessWidget
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('MyTherapy'),
+        title: Text('Home'),
         elevation: 0.0,
         actions: <Widget>[
           FlatButton.icon(
@@ -30,17 +30,30 @@ class Home extends StatelessWidget
       ),
 
       body: Container(
+        padding: EdgeInsets.all(10) ,
         child:Center(
           child: Column(
           children: <Widget>[
+            SizedBox(height: 40),
+
+            Text(
+              "Welcome to MyTherapy",
+              style: TextStyle(
+                fontSize: 25,
+              ),
+            ),
             SizedBox(height: 30),
 
-            //View Entries
-            SizedBox(
-              height: 100,
-              width: 250,
+            Row(
+            children: <Widget>[
+              SizedBox(height: 30),
 
-              child: FlatButton.icon(
+              //View Entries
+              SizedBox(
+                height: 200,
+                width: 150,
+
+                child: FlatButton.icon(
                 color: Colors.lightBlue,
                 icon: Icon(Icons.description, color: textColor),
                 label: Text(
@@ -65,10 +78,11 @@ class Home extends StatelessWidget
             ),
 
             //Add Entry
-            SizedBox(height: 20),
+            SizedBox(width: 32.5),
             SizedBox(
-                height: 100,
-                width: 250,
+
+                height: 200,
+                width: 150,
 
                 child: FlatButton.icon(
                   color: Colors.lightBlue,
@@ -91,18 +105,24 @@ class Home extends StatelessWidget
                   },
                 )
             ),
+            ],
+            ),
 
-            //Settings
-            SizedBox(height: 20),
-            SizedBox(
-                height: 100,
-                width: 250,
+            SizedBox(height: 30),
+
+            Row(
+              children: <Widget>[
+              //Settings
+              SizedBox(height: 20),
+              SizedBox(
+                height: 200,
+                width: 150,
 
                 child: FlatButton.icon(
                   color: Colors.lightBlue,
                   icon: Icon(Icons.settings,color: textColor),
                   label: Text(
-                    "Settings",
+                    "\n Settings",
                     style: TextStyle(color: textColor),
                   ),
 
@@ -122,16 +142,16 @@ class Home extends StatelessWidget
                 ),
 
             //analytics button
-            SizedBox(height: 20),
+            SizedBox(width: 32),
             SizedBox(
-              height: 100,
-              width: 250,
+              height: 200,
+              width: 150,
 
               child: FlatButton.icon(
                 color: Colors.lightBlue,
                 icon: Icon(Icons.assessment,color: textColor),
                 label: Text(
-                  "Analytics",
+                  "\n Analytics",
                   style: TextStyle(color: textColor),
                 ),
 
@@ -149,7 +169,7 @@ class Home extends StatelessWidget
                 },
               ),
             ),
-          ],
+            ],),],
         ),
       ),
 
