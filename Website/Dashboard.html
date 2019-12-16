@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="Add Entry">
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="MyTherapyStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<nav class = "col-sm-14">
+		<ul>
+			<li></li>
+
+			<li class="title">
+				MyTherapy
+			</li>
+
+			
+		</ul>
+	<!-- End Nav Bar--> 	
+    </nav>
+    
+    <!-- SIGN UP MODAL -->
+  <div id="modal-signup" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4>Sign up</h4>
+            <button class="close-button" id="close-button">X</button>
+        </div>
+      
+      <form id="signup-form">
+        <div class="input-field">
+          <input type="email" id="signup-email" required />
+          <label for="signup-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="signup-password" required />
+          <label for="signup-password">Choose password</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Sign up</button>
+      </form>
+    </div>
+  </div>
+  <!-- LOGIN MODAL -->
+  <div id="modal-login" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h4>Login</h4>
+          <span onclick="document.getElementById('modal-login').style.display='none'""> 
+        
+        </div>
+      <form id="login-form">
+        <div class="input-field">
+          <input type="email" id="login-email" required />
+          <label for="login-email">Email address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="login-password" required />
+          <label for="login-password">Your password</label>
+        </div>
+        <button class="btn yellow darken-2 z-depth-0">Login</button>
+      </form>
+    </div>
+  </div>
+      
+    <div class="row">
+	    <div class="col-sm-2">
+			<div class="sidenav">
+
+                <!-- Log in -->
+				<li class="logged-out">
+					<a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+				</li>
+
+				<!-- Apply-->
+				<li class="logged-out">
+					<a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+                </li>
+            </div>
+        </div>
+
+        <div class="col-sm-8">
+
+        </div>
+    </div> 
+            
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-functions.js"></script>
+
+  <script>
+      var firebaseConfig = {
+         apiKey: "AIzaSyA0gpT-psrA1oaXFmp6V4snnjWsg4xIx8w",
+      authDomain: "mytherapy-8776f.firebaseapp.com",
+      databaseURL: "https://mytherapy-8776f.firebaseio.com",
+      projectId: "mytherapy-8776f",
+      //storageBucket: "mytherapy-8776f.appspot.com",
+      //messagingSenderId: "976009179852",
+      appId: "1:976009179852:web:dec8630a2c7782e2f5c869",
+      //measurementId: "G-RT4VGFYJZH"
+  };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      //Make auth and firebase references
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+
+      //Update firestore settings
+      db.settings({
+          timestampsInSnapshots: true
+      });
+
+  
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="auth.js"></script>
+  <script src="modals.js"></script>
+
+</body>
+</html>

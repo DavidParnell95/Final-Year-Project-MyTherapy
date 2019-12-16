@@ -9,24 +9,71 @@
 </head>
 
 <body>
-	<div class = "col-sm-12">
+	<nav class = "col-sm-14">
 		<ul>
-			<li><a href= "Home.html"><i class="fa fa-fw fa-home"></i>Home</a></li>
-			<li><a class="active" href="#FormPage">Add Entry</a></li>
-			<li><a href="#ViewEntries">View Entries</a></li>
-			<li><a href="Settings.html">Settings</a><li>
-			<li><a href="#"><i class="fa fa-fw fa-user"></i>Log Out</a></li>
+			<li></li>
+
+			<li class="title">
+				MyTherapy
+			</li>
 		</ul>
 	<!-- End Nav Bar--> 	
-	</div> 
+	</nav>
 	
 	<div class="row">
-		<div class="col-sm-4">
-			<div class="sidebar">
+		<div class="col-sm-2">
+			<div class="sidenav">
+
+				<!-- Home-->
+				<li class="logged-in">
+					<a href="Home.html"><i class="fa fa-fw fa-home"></i> Home</a>
+				</li>
+
+				<!-- View Entries-->
+				<li class="logged-in">
+					<a href="ViewEntries.html"><i class="fa fa-list-alt" aria-hidden="true"></i> View Entries</a>
+				</li>
+
+				<!-- Add Entry-->
+				<li class="logged-in">
+					<a class="active"><i class="fa fa-plus" aria-hidden="true"></i> Add Entry</a>
+				</li>
+
+				<!-- Analytics-->
+				<li class="logged-in">
+					<a href="#Analytics.html"><i class="fa fa-bar-chart" aria-hidden="true"></i> Analytics</a>
+				</li>
+
+				<!-- Settings-->
+				<li class="logged-in">
+					<a href="#Settings.html"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
+				</li>
+
+				<!-- Logout -->
+				<li class="logged-in">
+					<a href="#" class="grey-text" id="logout">Logout</a>
+				</li>
+
+				<!-- Log in -->
+				<li class="logged-out">
+					<a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
+				</li>
+
+				<!-- Apply-->
+				<li class="logged-out">
+					<a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
+				</li>
 			</div>
+        </div>
+
+		<div class="=col-sm-2">
+			<div class="sideSpace"></div>
 		</div>
 		
 		<div class="col-sm-8">
+			<div class = "space"></div>
+
+			<h1>New Entry</h1>
 			<form class = "NewEntry">
 				<p>Date: <span id="datetime"></span></p>
 				<script>
@@ -57,5 +104,43 @@
 		</div>
 	<!-- End Row -->
 	</div>
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+  	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-functions.js"></script>
+
+	<script>
+		var firebaseConfig = {
+   		apiKey: "AIzaSyA0gpT-psrA1oaXFmp6V4snnjWsg4xIx8w",
+    	authDomain: "mytherapy-8776f.firebaseapp.com",
+    	databaseURL: "https://mytherapy-8776f.firebaseio.com",
+    	projectId: "mytherapy-8776f",
+    	//storageBucket: "mytherapy-8776f.appspot.com",
+    	//messagingSenderId: "976009179852",
+    	appId: "1:976009179852:web:dec8630a2c7782e2f5c869",
+    	//measurementId: "G-RT4VGFYJZH"
+	};
+  
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+
+		//Make auth and firebase references
+		const auth = firebase.auth();
+		const db = firebase.firestore();
+
+		//Update firestore settings
+		db.settings({
+    		timestampsInSnapshots: true
+		});
+	
+	</script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="auth.js"></script>
+	<script src="modals.js"></script>
+	<script src="entries.js"></script>
+	<script src="menu.js"></script>
 </body>
 </html>

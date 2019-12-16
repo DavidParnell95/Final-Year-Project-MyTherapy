@@ -18,6 +18,7 @@ li a {
   display: block;
   color: white;
   text-align: center;
+  font-size: 30;
   padding: 14px 16px;
   text-decoration: none;
 }
@@ -31,8 +32,32 @@ li a:hover {
 }
 
 .sidebar{
-	float: left;
-	width:100%;
+  background-color: #333;
+}
+
+.sidenav {
+  height: 400%;
+  width: 100%;
+  position: static;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  color: #333;
+  background-color: #333;
+  overflow-x: hidden;
+}
+
+.sidenav a {
+  padding-top: 6px;
+  text-decoration: none;
+  text-align: left;
+  font-size: 18px;
+  color: #ffffff;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
 }
 
 .col{
@@ -67,4 +92,75 @@ input[type=text] {
 
 input[type=text]:focus {
   border: 3px solid #555;
+}
+
+.space{
+  height: 5opx;
+}
+
+
+.NewEntry{
+  font-size: 16;
+}
+
+.title
+{
+  color: #f1f1f1;
+  font-size: xx-large;
+}
+
+.logged-out
+{
+  width: 100%;
+  text-align: left;
+  border-bottom: 2px #f1f1f1;
+}
+
+.logged-in
+{
+  width: 100%;
+  text-align: left;
+  border-bottom: 2px #f1f1f1;
+  width: 200px;
+}
+
+/* The Modal (background) */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 30%;
+  overflow: auto;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  float: left;
+  text-align: left;
+  background-color: #555;
+  color: white;
+}
+
+.container{
+  background-color: #f1f1f1;
+  margin-top: 40px;
+}
+
+.entries
+{
+  background-color: #f1f1f1;
+  font-size: large;
+}
+
+.collapsible-header
+{
+  font-size: x-large;
 }
