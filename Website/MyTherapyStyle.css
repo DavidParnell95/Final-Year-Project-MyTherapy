@@ -33,12 +33,12 @@ li a:hover {
 
 .sidebar{
   background-color: #333;
+  width: 80%;
 }
 
 .sidenav {
   height: 400%;
-  width: 100%;
-  position: static;
+  width: 110%;
   z-index: 1;
   top: 0;
   left: 0;

@@ -8,7 +8,7 @@ const setupUI = (user) => {
     if(user)
     {
         //toggle UI elemnts
-        loggedInLinks.forEach(item = item.style.display = 'block');
+        loggedInLinks.forEach(item => item.style.display = 'block');
         loggedOutLinks.forEach(item => item.style.display = 'none');
     }
 
