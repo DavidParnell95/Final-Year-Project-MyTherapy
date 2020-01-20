@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_therapy/Screens/Entries/view_entries.dart';
 import 'package:my_therapy/Shared/constants.dart';
 import 'package:my_therapy/Screens/Entries/add_entry.dart';
 import 'package:my_therapy/Services/auth.dart';
@@ -45,7 +46,7 @@ class Home extends StatelessWidget
             SizedBox(height: 30),
 
             Row(
-            children: <Widget>[
+              children: <Widget>[
               SizedBox(height: 30),
 
               //View Entries
@@ -67,19 +68,16 @@ class Home extends StatelessWidget
                 ),
 
                 onPressed: (){
-                  Toast.show(
-                      "UNDER CONSTRTUCTION",
-                      context,
-                      duration: Toast.LENGTH_SHORT,
-                      gravity: Toast.BOTTOM
-                  );
-                },
+                  Navigator.push(
+                  context,
+                  new MaterialPageRoute(builder: (ctxt) => new ViewEntries()));
+                  }
+                ),
               ),
-            ),
 
-            //Add Entry
-            SizedBox(width: 32.5),
-            SizedBox(
+                //Add Entry
+                SizedBox(width: 32.5),
+                SizedBox(
 
                 height: 200,
                 width: 150,
