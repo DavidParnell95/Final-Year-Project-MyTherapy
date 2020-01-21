@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_therapy/Services/auth.dart';
 import 'package:my_therapy/Shared/constants.dart';
+import 'package:my_therapy/Shared/constants.dart' as prefix0;
 import 'package:my_therapy/Shared/loading.dart';
 
 class Register extends StatefulWidget
@@ -36,7 +37,10 @@ class _RegisterState extends State<Register>
     return loading ? Loading() : Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        title: Text('Apply to MyTherapy'),
+        title: Text(
+          'Apply to MyTherapy',
+          style: TextStyle(color: buttonText),
+        ),
 
         actions: <Widget>[
 

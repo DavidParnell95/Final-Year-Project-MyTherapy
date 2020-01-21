@@ -3,6 +3,7 @@ import 'package:my_therapy/Screens/Entries/view_entries.dart';
 import 'package:my_therapy/Shared/constants.dart';
 import 'package:my_therapy/Screens/Entries/add_entry.dart';
 import 'package:my_therapy/Services/auth.dart';
+import 'package:my_therapy/Shared/constants.dart' as prefix0;
 import 'package:toast/toast.dart';
 
 class Home extends StatelessWidget
@@ -18,10 +19,10 @@ class Home extends StatelessWidget
         elevation: 0.0,
         actions: <Widget>[
           FlatButton.icon(
-            icon: Icon(Icons.person, color: textColor),
+            icon: Icon(Icons.person, color: buttonText),
             label: Text(
               "Logout",
-              style: TextStyle(color: textColor),
+              style: TextStyle(color: prefix0.buttonText),
             ),
             onPressed: () async{
               await _auth.logOut();
@@ -56,10 +57,10 @@ class Home extends StatelessWidget
 
                 child: FlatButton.icon(
                 color: Colors.lightBlue,
-                icon: Icon(Icons.description, color: textColor),
+                icon: Icon(Icons.description, color: buttonText),
                 label: Text(
                   "View Entries",
-                  style: TextStyle(color: textColor),
+                  style: TextStyle(color: buttonText),
                 ),
 
                 //Button shape
@@ -84,10 +85,10 @@ class Home extends StatelessWidget
 
                 child: FlatButton.icon(
                   color: Colors.lightBlue,
-                  icon: Icon(Icons.note_add, color: textColor),
+                  icon: Icon(Icons.note_add, color: buttonText),
                   label: Text(
                       "Add Entry",
-                      style: TextStyle(color: textColor)
+                      style: TextStyle(color: buttonText)
                   ),
 
                   //Button shape
@@ -118,10 +119,10 @@ class Home extends StatelessWidget
 
                 child: FlatButton.icon(
                   color: Colors.lightBlue,
-                  icon: Icon(Icons.settings,color: textColor),
+                  icon: Icon(Icons.settings,color: buttonText),
                   label: Text(
                     "\n Settings",
-                    style: TextStyle(color: textColor),
+                    style: TextStyle(color: buttonText),
                   ),
 
                   //Button shape
@@ -147,10 +148,10 @@ class Home extends StatelessWidget
 
               child: FlatButton.icon(
                 color: Colors.lightBlue,
-                icon: Icon(Icons.assessment,color: textColor),
+                icon: Icon(Icons.assessment,color: buttonText),
                 label: Text(
                   "\n Analytics",
-                  style: TextStyle(color: textColor),
+                  style: TextStyle(color: buttonText),
                 ),
 
                 //Button shape

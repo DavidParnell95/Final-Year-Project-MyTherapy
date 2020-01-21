@@ -33,7 +33,7 @@ class _AddEntryState extends State<AddEntry>{
       appBar: AppBar(
         title: Text(
           'Add Entry',
-          style: TextStyle(color: textColor),
+          style: TextStyle(color: buttonText),
         ),
       ),
 

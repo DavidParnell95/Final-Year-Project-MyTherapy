@@ -20,7 +20,7 @@ class ViewEntries extends StatelessWidget {
           appBar: AppBar(
             title: Text(
                 'Entries',
-                style: TextStyle(color: textColor)
+                style: TextStyle(color: buttonText)
             ),
 
           ),
@@ -30,6 +30,4 @@ class ViewEntries extends StatelessWidget {
         )
     );
   }
-
-
 }
