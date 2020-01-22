@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_therapy/Shared/constants.dart';
-import 'package:my_therapy/Shared/constants.dart' as prefix0;
 
 class EditForm extends StatefulWidget
 {
@@ -32,12 +31,29 @@ class _EditFormState extends State<EditForm>
           //Date
           SizedBox(height: spacing),
           Text(
+            //TODO show entry date
             'DATE',
             style: TextStyle(color: textColor, fontSize: fontSize),
           ),
 
           //SUDS Edit
           SizedBox(height: spacing),
+          DropdownButtonFormField(
+            //TODO Fix changes not showing up
+            value: _currentSuds ?? '1',//Tracks value of dropDown
+            decoration: textInputDecoration,
+            items: suds.map((sud){
+
+              return DropdownMenuItem(
+                value: sud,//Selected value
+                child: Text('$sud'),
+              );
+
+            }).toList(),//Converts from iterable -> list
+
+            onChanged: (val) => setState(() => _currentSuds = val),
+          ),
+
 
 
           //Entry Edit
@@ -56,7 +72,7 @@ class _EditFormState extends State<EditForm>
               //Confirm
               RaisedButton(
                 color: confirmColor,
-                child: Text('Confirm', style: TextStyle(color: buttonText,
+                child: Text('Update', style: TextStyle(color: buttonText,
                     fontSize: fontSize),
                 ),
                 onPressed: (){
@@ -72,9 +88,10 @@ class _EditFormState extends State<EditForm>
                 child: Text('Cancel', style: TextStyle(color: buttonText,
                     fontSize: fontSize),
                 ),
-                onPressed: ()
+                onPressed: () async
                 {
-
+                  print(_currentSuds);
+                  print(_currentEntry);
                 },
               ),
             ],
