@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_therapy/Screens/Analytics/analytics.dart';
 import 'package:my_therapy/Screens/Entries/view_entries.dart';
 import 'package:my_therapy/Shared/constants.dart';
 import 'package:my_therapy/Screens/Entries/add_entry.dart';
@@ -159,12 +160,8 @@ class Home extends StatelessWidget
                     borderRadius: new BorderRadius.circular(30.0)
                 ),
                 onPressed: (){
-                  Toast.show(
-                      "UNDER CONSTRTUCTION",
-                      context,
-                      duration: Toast.LENGTH_SHORT,
-                      gravity: Toast.BOTTOM
-                  );
+                  Navigator.push(context, 
+                  new MaterialPageRoute(builder: (ctxt) => new Analytics()));
                 },
               ),
             ),

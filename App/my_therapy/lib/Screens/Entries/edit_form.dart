@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:my_therapy/Shared/constants.dart';
 
@@ -38,8 +40,9 @@ class _EditFormState extends State<EditForm>
 
           //SUDS Edit
           SizedBox(height: spacing),
+
+          //TODO Fix value change not showing
           DropdownButtonFormField(
-            //TODO Fix changes not showing up
             value: _currentSuds ?? '1',//Tracks value of dropDown
             decoration: textInputDecoration,
             items: suds.map((sud){
@@ -57,6 +60,7 @@ class _EditFormState extends State<EditForm>
 
 
           //Entry Edit
+          //TODO fix not showing updated text
           SizedBox(height: spacing),
           TextFormField(
             decoration: textInputDecoration.copyWith(hintText: "Edit Entry"),
