@@ -39,6 +39,36 @@ auth.onAuthStateChanged(user =>{
     }
 })
 
+//Create new Entry
+const createForm = document.querySelector('#create-form');
+createForm.addEventListener('submit', (e) =>{
+    e.preventDefault();
+
+    //Get current date
+    var date = new Date();
+
+    var dd = String(date.getDate()).padStart(2, '0');//get days
+    var mm = String(date.getMonth() + 1).padStart(2, '0'); //get month, January is 0!
+    var yyyy = date.getFullYear();//get year
+
+    date = dd + '/' + mm + '/' + yyyy;//store in date
+
+    //Create new record in collection
+    db.collection('entries').add({
+        date: date,//date = date calculated above ^ 
+        suds: createForm['suds'].value,//suds = value from drop down
+        entry: createForm['summary'].value,
+    }).then(() => {
+        
+        //close modal & reset form
+        const modal = document.querySelector('#modal-create');
+        M.Modal.getInstance(modal).close();
+        createForm.reset();
+    }).catch(err => {//If error, run this instead of adding to DB 
+        console.log(err.message);
+    })
+})
+
 //Get data from application form
 const signupForm = document.querySelector('#signup-form');
 

@@ -32,7 +32,6 @@ li a:hover {
 }
 
 .sidebar{
-  background-color: #333;
   width: 80%;
 }
 
@@ -42,8 +41,6 @@ li a:hover {
   z-index: 1;
   top: 0;
   left: 0;
-  color: #333;
-  background-color: #333;
   overflow-x: hidden;
 }
 
@@ -111,14 +108,12 @@ input[type=text]:focus {
 
 .logged-out
 {
-  width: 100%;
   text-align: left;
   border-bottom: 2px #f1f1f1;
 }
 
 .logged-in
 {
-  width: 100%;
   text-align: left;
   border-bottom: 2px #f1f1f1;
   width: 200px;
@@ -149,18 +144,60 @@ input[type=text]:focus {
   color: white;
 }
 
+.scroll-header
+{
+  width: 50%;
+  color: #ffffff;
+  background-color: #333;
+  font-size: x-large;
+}
+
+.scroll-entries
+{
+  border: 1px solid black;
+  width: 50%;
+  height: 200%;
+  overflow: scroll;
+}
+
 .container{
-  background-color: #f1f1f1;
+  width: 81%;
+  background-color: #ffffff;
   margin-top: 40px;
+  overflow: auto;
 }
 
 .entries
 {
-  background-color: #f1f1f1;
+  background-color: #ffffff;
   font-size: large;
+}
+
+.collapsible
+{
+  width: 100%;
 }
 
 .collapsible-header
 {
-  font-size: x-large;
+  border-top: 1px solid #555;
+  width: 500px;
+  font-size: large;
+}
+
+.collapsible-body
+{
+  width: 500px;
+  float: left;
+}
+
+.Date
+{
+
+  float: left;
+}
+
+.Suds
+{
+  float: right;
 }

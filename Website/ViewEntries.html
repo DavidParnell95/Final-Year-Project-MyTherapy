@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="Add Entry">
+	<meta name="View Entries">
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="MyTherapyStyle.css">
@@ -17,54 +17,94 @@
 				MyTherapy
 			</li>
 
+			<!-- Home-->
+			<li class="logged-in"style="display: none">
+				<a href="Home.html"><i class="fa fa-fw fa-home"></i> Home</a>
+			</li>
+
+			<!-- View Entries-->
+			<li class="logged-in"style="display: none">
+				<a class="active"><i class="fa fa-list-alt" aria-hidden="true"></i> View Entries</a>
+			</li>
+
+			<!-- Add Entry-->
+			<li class="logged-in" style="display: none;">
+				<a href="#" class="grey-text modal-trigger" data-target="modal-create"><i class="fa fa-plus" aria-hidden="true"></i>Add Entry</a>
+			</li>
+
+			<!-- Analytics-->
+			<li class="logged-in"style="display: none">
+				<a href="#Analytics.html"><i class="fa fa-bar-chart" aria-hidden="true"></i> Analytics</a>
+			</li>
+
+			<!-- Settings-->
+			<li class="logged-in"style="display: none">
+				<a href="#Settings.html"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
+			</li>
+
+			<!-- Logout -->
+			<li class="logged-in"style="display: none">
+				<a href="#" id="logout"><i class="fa fa-user-circle" aria-hidden="true"></i> Logout</a>
+			</li>
+		
+			<!-- Log in -->
+			<li class="logged-out"style="display: none">
+				<a href="#" class="grey-text modal-trigger" data-target="modal-login"><i class="fa fa-user-circle" aria-hidden="true"></i> Login</a>
+			</li>
+		
+			<!-- Apply-->
+			<li class="logged-out"style="display: none">
+				<a href="#" class="grey-text modal-trigger" data-target="modal-signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</a>
+			</li>
+
 			
 		</ul>
 	<!-- End Nav Bar--> 	
 	</nav>
-    
+	
+	<!-- Create Entry -->
+	<div id="modal-create" class="modal">
+		<div class="modal-content">
+			<h4>New Entry</h4><br>
+
+			<form id="create-form">
+				<p>Date: <span id="datetime"></span></p>
+				<script>
+					var dt = new Date();
+					document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+				</script>
+				<br>
+
+				SUDs:
+				<select name="suds" id='suds' required>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+
+				<div class="input-field">
+					<textarea id="summary" class="materialize-textarea" required></textarea>
+					<label for="summary">Summary</label>
+				</div>
+
+				<button class="createEntry">Create Entry</button>
+
+			</form>
+		</div>
+	</div>
+
     <div class="row">
 		<div class="col-sm-2">
 			<div class="sidenav">
 
-				<!-- Home-->
-				<li class="logged-in">
-					<a href="Home.html"><i class="fa fa-fw fa-home"></i> Home</a>
-				</li>
-
-				<!-- View Entries-->
-				<li class="logged-in">
-					<a class="active"><i class="fa fa-list-alt" aria-hidden="true"></i> View Entries</a>
-				</li>
-
-				<!-- Add Entry-->
-				<li class="logged-in">
-					<a href="AddEntry.html"><i class="fa fa-plus" aria-hidden="true"></i> Add Entry</a>
-				</li>
-
-				<!-- Analytics-->
-				<li class="logged-in">
-					<a href="#Analytics.html"><i class="fa fa-bar-chart" aria-hidden="true"></i> Analytics</a>
-				</li>
-
-				<!-- Settings-->
-				<li class="logged-in">
-					<a href="#Settings.html"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
-				</li>
-
-				<!-- Logout -->
-				<li class="logged-in">
-					<a href="#" id="logout"><i class="fa fa-user-circle" aria-hidden="true"></i> Logout</a>
-				</li>
-
-				<!-- Log in -->
-				<li class="logged-out">
-					<a href="#" class="grey-text modal-trigger" data-target="modal-login"><i class="fa fa-user-circle" aria-hidden="true"></i> Login</a>
-				</li>
-
-				<!-- Apply-->
-				<li class="logged-out">
-					<a href="#" class="grey-text modal-trigger" data-target="modal-signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</a>
-				</li>
+				
 			</div>
         </div>
 		
