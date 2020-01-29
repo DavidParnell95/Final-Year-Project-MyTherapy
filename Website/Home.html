@@ -42,6 +42,11 @@
 				<a href="#Settings.html"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
 			</li>
 
+			<!-- Account -->
+			<li class="logged-in" style="display: none">
+				<a href="#" class="grey-text modal-trigger" data-target="modal-account"><i class="fa fa-id-card" aria-hidden="true"></i> Account</a>
+			</li>
+
 			<!-- Logout -->
 			<li class="logged-in"style="display: none">
 				<a href="#" id="logout"><i class="fa fa-user-circle" aria-hidden="true"></i> Logout</a>
@@ -82,6 +87,14 @@
 			<button class="btn yellow darken-2 z-depth-0">Sign up</button>
 		  </form>
 		</div>
+	  </div>
+
+	  <!-- Account Modal-->
+	  <div id="modal-account" class="modal">
+		  <div class=" modal-content center-align">
+			  <h4>Account Details</h4>
+			  <div class="account-details"></div>
+		  </div>
 	  </div>
 
 	  <!-- LOGIN MODAL -->

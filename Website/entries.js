@@ -1,7 +1,7 @@
 //Get reference to entry list
 const entryList = document.querySelector('.entries');
 
-// setup guides
+// setup entries
 const setupEntries = (data) => {
 
     if(data.length)
