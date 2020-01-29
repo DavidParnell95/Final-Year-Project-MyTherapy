@@ -9,16 +9,27 @@ const setupUI = (user) => {
     if(user)
     {
         //account
-        const html = `
-        <div>
-            <p>User: ${user.uid}</p>
-            <p>Email: ${user.email}</p>
-            <p>Therapist:</p>
-        </div>
-        `;
-
-        accountDetails.innerHTML=html;//Add details to html
-
+        db.collection('users')
+        .doc(user.uid).get().then(doc =>
+            {
+        
+                if(user)
+                {
+                    const html = `
+            
+                    <div>
+                        <div>User: ${doc.data().name}</div>
+                        <div>User Type:</div>
+                        <div>Institution:${doc.data().institution}</div>
+                        <div>Institution Address:${doc.data().instAddress}</div>
+                    </div>
+                    `;
+                
+                    accountDetails.innerHTML=html;//Add details to html#
+                };
+               
+            });
+        
         //toggle UI elemnts
         loggedInLinks.forEach(item => item.style.display = 'block');
         loggedOutLinks.forEach(item => item.style.display = 'none');

@@ -106,19 +106,6 @@ input[type=text]:focus {
   font-size: xx-large;
 }
 
-.logged-out
-{
-  text-align: left;
-  border-bottom: 2px #f1f1f1;
-}
-
-.logged-in
-{
-  text-align: left;
-  border-bottom: 2px #f1f1f1;
-  width: 200px;
-}
-
 /* The Modal (background) */
 .modal {
   position: fixed;
