@@ -27,11 +27,6 @@
 				<a href="ViewEntries.html"><i class="fa fa-list-alt" aria-hidden="true"></i> View Entries</a>
 			</li>
 
-			<!-- Add Entry-->
-			<li class="logged-in"style="display: none">
-				<a href="AddEntry.html"><i class="fa fa-plus" aria-hidden="true"></i> Add Entry</a>
-			</li>
-
 			<!-- Analytics-->
 			<li class="logged-in"style="display: none">
 				<a href="#Analytics.html"><i class="fa fa-bar-chart" aria-hidden="true"></i> Analytics</a>
@@ -75,15 +70,37 @@
 				<h4>Sign up</h4>
 			</div>
 		  
-		  <form id="signup-form">
+			<!-- Email -->
+		  	<form id="signup-form">
 			<div class="input-field">
 			  <input type="email" id="signup-email" required />
 			  <label for="signup-email">Email address</label>
 			</div>
+
+			<!-- Name -->
+			<div class="input-field">
+				<input type="text" id="signup-name" required />
+				<label for="signup-name">Name</label>
+			</div>
+
+			<!-- password-->
 			<div class="input-field">
 			  <input type="password" id="signup-password" required />
 			  <label for="signup-password">Choose password</label>
 			</div>
+			
+			<!-- Institution field-->
+			<div class="input-field">
+				<input type="text" id="signup-inst" required />
+				<label for="signup-inst">Institution</label>
+			</div>
+
+			<!-- Inst Address-->
+			<div class="input-field">
+				<input type="text" id="signup-addr" required />
+				<label for="signup-addr">Institution Address</label>
+			</div>
+
 			<button class="btn yellow darken-2 z-depth-0">Sign up</button>
 		  </form>
 		</div>
@@ -114,6 +131,44 @@
 		  </form>
 		</div>
 	  </div>
+
+	  <!-- Create Entry -->
+	<div id="modal-create" class="modal">
+		<div class="modal-content">
+			<h4>New Entry</h4><br>
+
+			<form id="create-form">
+				<p>Date: <span id="datetime"></span></p>
+				<script>
+					var dt = new Date();
+					document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+				</script>
+				<br>
+
+				SUDs:
+				<select name="suds" id='suds' required>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+
+				<div class="input-field">
+					<textarea id="summary" class="materialize-textarea" required></textarea>
+					<label for="summary">Summary</label>
+				</div>
+
+				<button class="createEntry">Create Entry</button>
+
+			</form>
+		</div>
+	</div>
     
     <div class="row">
 		<div class="col-sm-2 sidebar">
@@ -126,14 +181,18 @@
 		<!-- Entry List -->
         <div class="col-sm-8">
 		</br>
-			<div class="scroll-header">
-				Recent Entries
-				
-			</div>
-            <div class="scroll-entries">
-				<ul class="collapsible entries">
-
-				</ul>
+			<div class="EntryBox">
+				<div class="scroll-header">
+					Recent Entries
+					
+				</div>
+				<div class="scroll-entries">
+					<ul class="collapsible entries">
+	
+					</ul>
+				</div>
+				<br>
+				<button class="quickAdd modal-trigger" data-target="modal-create">Add Entry</button>
 			</div>
         </div>
 	</div>

@@ -3,7 +3,7 @@
 
 const loggedOutLinks = document.querySelectorAll('.logged-out');
 const loggedInLinks = document.querySelectorAll('.logged-in');
-const accountDetails = document.querySelector('.account-details');
+const accountDetails = document.querySelector('.account-details');//Get account details section of page
 
 const setupUI = (user) => {
     if(user)
@@ -13,11 +13,12 @@ const setupUI = (user) => {
         <div>
             <p>User: ${user.uid}</p>
             <p>Email: ${user.email}</p>
-            <p>Therapist</p>
+            <p>Therapist:</p>
         </div>
         `;
 
-        accountDetails .innerHTML = html;
+        accountDetails.innerHTML=html;//Add details to html
+
         //toggle UI elemnts
         loggedInLinks.forEach(item => item.style.display = 'block');
         loggedOutLinks.forEach(item => item.style.display = 'none');

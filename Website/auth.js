@@ -10,7 +10,8 @@
 
 //Listen for auth state changes
 auth.onAuthStateChanged(user =>{
-    console.log(user)
+    console.log(user);//Log current user 
+
     //Check if theres a user logged in
     if(user)
     {
@@ -85,8 +86,8 @@ if(signupForm)
         e.preventDefault();
 
         //Get user info from form
-        const email = signupForm['signup-Email'].value;//emailconst instAdd = signupForm['signup-InstAdd'].value;//institution address
-        const passwrd = signupForm['signup-passwrd'].value;//password
+        const email = signupForm['signup-email'].value;//emailconst instAdd = signupForm['signup-InstAdd'].value;//institution address
+        const passwrd = signupForm['signup-password'].value;//password
 
         //console.log(name,email,inst,instAdd);
 
@@ -94,13 +95,22 @@ if(signupForm)
         //Async therefore must wait for it to complete
         auth.createUserWithEmailAndPassword(email,passwrd).then(cred =>{
             console.log(cred);
+            
+            //Create entry in users collection
+            //takes credential and access the user from that 
+            return db.collection('users').doc(cred.user.uid).set({
+                name: signupForm['signup-name'].value,
+                institution: signupForm['signup-inst'].value,
+                instAddress: signupForm['signup-addr'].value
+            });
 
+            
+        }).then(() => {
             //close modal & reset form
             const modal = document.querySelector('#modal-apply');
             M.Modal.getInstance(modal).close();
             signupForm.reset();
         });
-    
     });
 }
 

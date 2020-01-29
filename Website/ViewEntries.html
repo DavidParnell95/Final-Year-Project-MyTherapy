@@ -42,6 +42,11 @@
 				<a href="#Settings.html"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
 			</li>
 
+			<!-- Account -->
+			<li class="logged-in" style="display: none">
+				<a href="#" class="grey-text modal-trigger" data-target="modal-account"><i class="fa fa-id-card" aria-hidden="true"></i> Account</a>
+			</li>
+
 			<!-- Logout -->
 			<li class="logged-in"style="display: none">
 				<a href="#" id="logout"><i class="fa fa-user-circle" aria-hidden="true"></i> Logout</a>
@@ -61,6 +66,14 @@
 		</ul>
 	<!-- End Nav Bar--> 	
 	</nav>
+
+	<!-- Account Modal-->
+	<div id="modal-account" class="modal">
+		<div class=" modal-content center-align">
+			<h4>Account Details</h4>
+			<div class="account-details"></div>
+		</div>
+	</div>
 	
 	<!-- Create Entry -->
 	<div id="modal-create" class="modal">
@@ -120,41 +133,41 @@
 	
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
-  	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
-  	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
-  	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-functions.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-functions.js"></script>
 
-	<script>
-		var firebaseConfig = {
-   		apiKey: "AIzaSyA0gpT-psrA1oaXFmp6V4snnjWsg4xIx8w",
-    	authDomain: "mytherapy-8776f.firebaseapp.com",
-    	databaseURL: "https://mytherapy-8776f.firebaseio.com",
-    	projectId: "mytherapy-8776f",
-    	//storageBucket: "mytherapy-8776f.appspot.com",
-    	//messagingSenderId: "976009179852",
-    	appId: "1:976009179852:web:dec8630a2c7782e2f5c869",
-    	//measurementId: "G-RT4VGFYJZH"
-	};
+  <script>
+	  var firebaseConfig = {
+		 apiKey: "AIzaSyA0gpT-psrA1oaXFmp6V4snnjWsg4xIx8w",
+	  authDomain: "mytherapy-8776f.firebaseapp.com",
+	  databaseURL: "https://mytherapy-8776f.firebaseio.com",
+	  projectId: "mytherapy-8776f",
+	  //storageBucket: "mytherapy-8776f.appspot.com",
+	  //messagingSenderId: "976009179852",
+	  appId: "1:976009179852:web:dec8630a2c7782e2f5c869",
+	  //measurementId: "G-RT4VGFYJZH"
+  };
+
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+
+	  //Make auth and firebase references
+	  const auth = firebase.auth();
+	  const db = firebase.firestore();
+
+	  //Update firestore settings
+	  db.settings({
+		  timestampsInSnapshots: true
+	  });
   
-		// Initialize Firebase
-		firebase.initializeApp(firebaseConfig);
-
-		//Make auth and firebase references
-		const auth = firebase.auth();
-		const db = firebase.firestore();
-
-		//Update firestore settings
-		db.settings({
-    		timestampsInSnapshots: true
-		});
-	
-	</script>
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script src="auth.js"></script>
-	<script src="modals.js"></script>
-	<script src="entries.js"></script>
-	<script src="menu.js"></script>
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="auth.js"></script>
+  <script src="modals.js"></script>
+  <script src="entries.js"></script>
+  <script src="menu.js"></script>
 
 </body>
 </html>
