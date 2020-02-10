@@ -11,13 +11,15 @@ const setupEntries = (data) => {
             const entry = doc.data();
             const li = `
             <li>
-                <div class="collapsible-header"> 
-                    <div class="Date">Date: ${entry.date}</div>
-                    <div class="Suds">SUDs: ${entry.suds}</div>
-                </div>
-                <br>
-                <div class="collapsible-body white">
-                    ${entry.entry}
+                <div class="collContainer">
+                    <button type="button" class="collapsible">
+                        Date: ${entry.date} 
+                        SUDs: ${entry.suds}
+                    </button>
+                
+                    <div class="content">
+                        <p>${entry.entry}</p>
+                    </div>
                 </div>
             </li>
             `;

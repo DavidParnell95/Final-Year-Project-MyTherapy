@@ -6,7 +6,21 @@
  * Get data from database 
  */
 
+// Add admin cloud function
+const adminForm = document.querySelector('.admin-actions');
+adminForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const adminEmail = document.querySelector('#admin-email').value;
+    const addAdminRole = functions.httpsCallable('addAdminRole');
 
+    //Invokes fucntion
+    addAdminRole({
+        email: adminEmail
+    }).then(result =>{
+        console.log(result)
+    });
+});
 
 //Listen for auth state changes
 auth.onAuthStateChanged(user =>{

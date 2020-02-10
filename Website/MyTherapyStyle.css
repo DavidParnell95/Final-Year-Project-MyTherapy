@@ -160,34 +160,7 @@ input[type=text]:focus {
   font-size: large;
 }
 
-.collapsible
-{
-  width: 100%;
-}
 
-.collapsible-header
-{
-  border-top: 1px solid #555;
-  width: 500px;
-  font-size: large;
-}
-
-.collapsible-body
-{
-  width: 500px;
-  float: left;
-}
-
-.Date
-{
-
-  float: left;
-}
-
-.Suds
-{
-  float: right;
-}
 
 .quickAdd{
   background-color: #555;
@@ -207,4 +180,28 @@ input[type=text]:focus {
 {
   transform: translateY(3px);
   box-shadow:0 1px grey;
+}
+
+
+.collapsible {
+  width: 200%;
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  border-bottom: 1px solid #555;
+  text-align: left;
+  outline: none;
+  font-size: 20px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #ffffff;
 }
