@@ -19,7 +19,7 @@
 
 			<!-- Home-->
 			<li class="logged-in"style="display: none">
-				<a class="active"><i class="fa fa-fw fa-home"></i> Home</a>
+				<a href="Home.html"><i class="fa fa-fw fa-home"></i> Home</a>
 			</li>
 
 			<!-- View Entries-->
@@ -58,8 +58,8 @@
 			</li>
 
 			<!-- Super User page-->
-			<li class="super-admoin" style="display: none;">
-				<a href="#"><i class="fa fa-wrench" aria-hidden="true">Maintenance</i></a>
+			<li class="admin" style="display: none;">
+				<a class="active"><i class="fa fa-wrench" aria-hidden="true">Maintenance</i></a>
 			</li>
 		</ul>
 	<!-- End Nav Bar--> 	
@@ -75,11 +75,91 @@
 
         <div class="col-sm-8">
             <div class="makeAdmin">
-                <!-- Admin Actions -->
+				<div class="header">
+					<h4>Add Therapist</h4>
+				</div>
+
+				<!-- Admin Actions -->
 				<form class="center-align admin-actions admin" style="margin: 40px auto; max-width: 300px;">
-					<input type="email" placeholder="User email" id="admin-email" required />
+					<input type="email" placeholder="New Therapist email" id="admin-email" required />
 					<button class="btn"> Make Admin</button>
 				</form>
 			</div>
-            </div>
+
+			<div class="makeSuper">
+				<div class="header">
+					<h4>Add Super User</h4>
+				</div>
+
+				<form class="center-align super-actions super" style="margin: 40px auto; max-width: 300px;">
+					<input type="email" placeholder="New Super Email" id="super-email" required /></br>
+					
+					<input type="checkbox" id="confirmation" name="confirm" value="confirmed" required>
+					<label for="confirmation" class="lable">Confirm Add Super User</label></br>
+
+					<button class="btn"> Make Super </button>
+				</form>
+			</div>
         </div>
+	</div>
+		
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-functions.js"></script>
+  
+	  <script>
+		  var firebaseConfig = {
+			 apiKey: "AIzaSyA0gpT-psrA1oaXFmp6V4snnjWsg4xIx8w",
+		  authDomain: "mytherapy-8776f.firebaseapp.com",
+		  databaseURL: "https://mytherapy-8776f.firebaseio.com",
+		  projectId: "mytherapy-8776f",
+		  //storageBucket: "mytherapy-8776f.appspot.com",
+		  //messagingSenderId: "976009179852",
+		  appId: "1:976009179852:web:dec8630a2c7782e2f5c869",
+		  //measurementId: "G-RT4VGFYJZH"
+	  };
+	
+		  // Initialize Firebase
+		  firebase.initializeApp(firebaseConfig);
+  
+		  //Make auth and firebase references
+		  const auth = firebase.auth();
+		  const db = firebase.firestore();
+		  const functions = firebase.functions();
+  
+		  //Update firestore settings
+		  db.settings({
+			  timestampsInSnapshots: true
+		  });
+  
+		  //Collapsible control
+		  var coll = document.getElementsByClassName("collapsible");
+		  var i;
+		  
+		  for (i = 0; i < coll.length; i++) {
+			coll[i].addEventListener("click", function() {
+			  this.classList.toggle("active");
+			  var content = this.nextElementSibling;
+			  
+			  if (content.style.display === "block") {
+				content.style.display = "none";
+			  } 
+			  
+			  else {
+				content.style.display = "block";
+			  }
+			});
+		  }
+	  
+	  </script>
+	  
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	  <script src="auth.js"></script>
+	  <script src="modals.js"></script>
+	  <script src="entries.js"></script>
+	  <script src="menu.js"></script>
+  
+  </body>
+  </html>

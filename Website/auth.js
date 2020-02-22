@@ -8,19 +8,23 @@
 
 // Add admin cloud function
 const adminForm = document.querySelector('.admin-actions');
-adminForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const adminEmail = document.querySelector('#admin-email').value;
-    const addAdminRole = functions.httpsCallable('addAdminRole');
 
-    //Invokes fucntion
-    addAdminRole({
-        email: adminEmail
-    }).then(result =>{
-        console.log(result)
+if(adminForm)
+{
+    adminForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const adminEmail = document.querySelector('#admin-email').value;
+        const addAdminRole = functions.httpsCallable('addAdminRole');
+    
+        //Invokes fucntion
+        addAdminRole({
+            email: adminEmail
+        }).then(result =>{
+            console.log(result)
+        });
     });
-});
+}
 
 //Listen for auth state changes
 auth.onAuthStateChanged(user =>{
@@ -30,7 +34,13 @@ auth.onAuthStateChanged(user =>{
     if(user)
     {
         console.log('User logged in', user);
-        
+        //Check if user attempting to log in is an admin 
+        user.getIdTokenResult().then(IdTokenResult => {
+            user.admin = IdTokenResult.claims.admin;
+            setupUI(user);
+
+        })
+
         //Get reference to DB and get data
         //onSnapshot reloads whenever db changes 
         db.collection('entries').onSnapshot(snapshot=>

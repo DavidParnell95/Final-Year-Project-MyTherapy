@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="Add Entry">
+	<meta name="Therapist">
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="MyTherapyStyle.css">
@@ -57,14 +57,18 @@
 				<a href="#" class="grey-text modal-trigger" data-target="modal-signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</a>
 			</li>
 
+			<!-- Therapist Section-->
+			<li class="admin" style="display: none;">
+				<a href="therapist.html"><i class="fa fa-" aria-hidden="true">Patient Management</i></a>
+			</li>
+
 			<!-- Super User page-->
-			<li class="super-admoin" style="display: none;">
-				<a href="#"><i class="fa fa-wrench" aria-hidden="true">Maintenance</i></a>
+			<li class="super" style="display: none;">
+				<a href="superzone.html"><i class="fa fa-wrench" aria-hidden="true">Maintenance</i></a>
 			</li>
 		</ul>
 	<!-- End Nav Bar--> 	
-	</nav>
-
+    </nav>
 	
 	<!-- SIGN UP MODAL -->
 	<div id="modal-signup" class="modal">
@@ -86,12 +90,6 @@
 				<input type="text" id="signup-name" required />
 				<label for="signup-name">Name</label>
 			</div>
-
-			<!-- password-->
-			<div class="input-field">
-			  <input type="password" id="signup-password" required />
-			  <label for="signup-password">Choose password</label>
-			</div>
 			
 			<!-- Institution field-->
 			<div class="input-field">
@@ -105,7 +103,13 @@
 				<label for="signup-addr">Institution Address</label>
 			</div>
 
-			<button class="btn yellow darken-2 z-depth-0">Sign up</button>
+			<!-- password-->
+			<div class="input-field">
+				<input type="password" id="signup-password" required />
+				<label for="signup-password">Choose password</label>
+			</div>
+
+			<button class="btn">Sign up</button>
 		  </form>
 		</div>
 	  </div>

@@ -205,3 +205,13 @@ input[type=text]:focus {
   overflow: hidden;
   background-color: #ffffff;
 }
+
+.btn{
+  background-color: #555;
+  color: #ffffff;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 10px;
+  box-shadow: 0 3px grey;
+}
