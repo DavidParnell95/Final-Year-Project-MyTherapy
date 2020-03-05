@@ -27,12 +27,18 @@ const setupEntries = (data) => {
         });
 
         //Put in DOM 
-        entryList.innerHTML = html
+        if(entryList)
+        {
+            entryList.innerHTML = html
+        }
     }
 
     else
     {
-        entryList.innerHTML = '<h5 class="center-align">Log in to view entries</h5>';
+        if(entryList)
+        {
+            entryList.innerHTML = '<h5 class="center-align">Log in to view entries</h5>';
+        }
     }
 
 };
