@@ -1,5 +1,4 @@
 //Responsible for outputting entries
-
 import 'package:flutter/material.dart';
 import 'package:my_therapy/Models/entry.dart';
 import 'package:provider/provider.dart';
@@ -19,10 +18,11 @@ class _EntryListState extends State<EntryList>
     final entries = Provider.of<List<Entry>>(context);
 
     //Print found entries to console
-    entries.forEach((entry){
-      print(entry.date);
-      print(entry.suds);
-      print(entry.entry);
+    entries.forEach((entries){
+      print(entries.date);
+      print(entries.suds);
+      print(entries.entry);
+      print(entries.uid);
     });
 
     return ListView.builder(

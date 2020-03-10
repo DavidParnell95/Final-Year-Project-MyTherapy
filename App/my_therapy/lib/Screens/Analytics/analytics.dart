@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:my_therapy/Screens/Analytics/Charts/bar_chart.dart';
-import 'package:my_therapy/Screens/Analytics/Charts/pie_chart.dart';
+import 'package:my_therapy/Models/entry.dart';
 import 'package:my_therapy/Shared/constants.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:my_therapy/Services/database.dart';
 
 
 class Analytics extends StatefulWidget
@@ -12,101 +14,98 @@ class Analytics extends StatefulWidget
 
 class _AnalyticsState extends State<Analytics>
 {
+  List<charts.Series<Entry, String>> _seriesBarData;
+  List<Entry> mydata;
 
+  _generateData(mydata){
+    _seriesBarData = List<charts.Series<Entry, String>>();
+    _seriesBarData.add(
+      charts.Series(
 
+        //X Axis Value
+        domainFn: (Entry entry, _) => entry.date,
 
-  @override
-  Widget build(BuildContext context) {
+        //Y Axis Value
+        measureFn: (Entry entry, _) => entry.suds,
 
-    int currentChart = 0;
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Analytics',
-          style: TextStyle(color: buttonText),
-        ),
-        elevation: 0.0,
-      ),
-
-      body: Container(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-
-          child: Column(
-            children: <Widget>[
-
-              SizedBox(height: spacing),
-              Row(
-                children: <Widget>[
-
-                  //Bar Chart
-                  IconButton(
-                    icon: Icon(Icons.insert_chart),
-                    color: textColor,
-                    onPressed: (){
-                      currentChart = 0;
-                    },
-                  ),
-
-                  // Line Chart
-                  IconButton(
-                    icon: Icon(Icons.show_chart),
-                    color: textColor,
-                    onPressed: (){
-                      currentChart = 1;
-                    },
-                  ),
-
-                  //Pie Chart
-                  IconButton(
-                    icon: Icon(Icons.pie_chart),
-                    color: textColor,
-                    onPressed: (){
-                      //Change to Pie Chart
-                      currentChart = 2;
-                    },
-                  ),
-
-
-                ],
-              ),
-
-              SizedBox(height: spacing),
-              Container(
-                child: _checkChart(currentChart),
-              ),
-
-            ],
-          ),
-        ),
-
+        colorFn: (Entry entry, _) => charts.ColorUtil.fromDartColor(chartColor),
+        id: 'Suds',
+        data: mydata,
+        labelAccessorFn: (Entry row, _) => "${row.suds}"
       ),
     );
   }
 
-  _checkChart(int currentChart)
-  {
-    print('Current Chart: $currentChart');
-
-    //Bar Chart set
-    if(currentChart == 0)
-    {
-      print('Bar Chart');
-      return BarChart();
-    }
-
-    //Line Chart
-    else if(currentChart ==1)
-    {
-      print('Line Chart');
-
-    }
-
-    //Pie Chart
-    else {
-      print('Pie Chart');
-      return PieChart();
-    }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Analytics")),
+      body: _buildBody(context),
+    ) ;
   }
+
+  //Gets Data from firestore
+  Widget _buildBody(BuildContext context)
+  {
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection('entries').snapshots(),
+      builder: (context, snapshot){
+        if(!snapshot.hasData)
+          {
+            return LinearProgressIndicator();
+          }
+
+        else{
+          List<Entry> entry = snapshot.data.documents.map(f);
+          return _buildChart(context, entry);
+        }
+      },
+    );
+  }//End _buildBody
+
+  Widget _buildChart(BuildContext context, List<Entry> entrydata)
+  {
+    mydata = entrydata;
+    _generateData(mydata);
+
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Container(
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Text(
+                "Weekly SUDs",
+                style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold),
+              ),
+
+              SizedBox(
+                height: spacing,
+              ),
+
+              Expanded(
+                child: charts.BarChart(_seriesBarData,
+                  animate: true,
+                  animationDuration: Duration(seconds: 5),
+                  behaviors: [
+
+                    new charts.DatumLegend(
+                      entryTextStyle: charts.TextStyleSpec(
+                        color: charts.MaterialPalette.purple.shadeDefault,
+                        fontFamily: 'Georgia',
+                        fontSize: 18
+                      ),
+                    )
+                  ]
+                ),
+              )
+
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+
 }

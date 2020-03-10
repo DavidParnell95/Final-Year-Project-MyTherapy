@@ -1,63 +1,64 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:my_therapy/Models/entry.dart';
-import 'package:my_therapy/Models/user.dart';
 
 class DatabaseService
 {
   final String uid;
-  final String date;
+  DatabaseService({this.uid});
 
-  DatabaseService({this.uid, this.date});
-
-
-  //collection reference
-  //If doesnt exist, firebase will create it
+  //Collection Ref
+  //Stores user data
   final CollectionReference userCollection = Firestore.instance.collection('users');
+  //Store entry data
   final CollectionReference entryCollection = Firestore.instance.collection('entries');
 
-
-
-
-  Future updateUserData(String name, String accountType, String intitution) async {
-    return await entryCollection.document(uid).setData({
-      'Name': name,
-      'Account Type': accountType,
-      'Institution' : intitution
+  //User Data
+  Future<void> updateUserData(String name, String instAddrress, String institution ) async{
+    return await userCollection.document(uid).setData({
+      'name' : name,
+      'instAddress' : instAddrress,
+      'institution' : institution,
     });
   }
 
-  //Entry list from snapshot
+  //Get user stream
+  Stream<QuerySnapshot> get users
+  {
+    return userCollection.snapshots();
+  }
+
+  //Entry Data
+  Future<void> updateEntryData(String date, String entry, int suds, String uid) async{
+    return await entryCollection.document(date).setData({
+      'date' : date,
+      'suds' : suds,
+      'entry' : entry,
+      'uid' : uid
+    });
+  }
+
+  //Entry List from Snapshot
+  //Returns a iterable containing several entries from the collection
   List<Entry> _entryListFromSnapshot(QuerySnapshot snapshot)
   {
-    //Map snapshot to an iterable
     return snapshot.documents.map((doc){
+      //print (doc.data)
+
+      //Return single entry for object
       return Entry(
-        date: doc.data['date'] ?? '00/00/00',
-        suds: doc.data['suds'] ?? 0,
+        date: doc.data['date'] ?? '',
+        suds: doc.data['suds'] ?? 5,
         entry: doc.data['entry'] ?? '',
+        uid: doc.data['uid'] ?? ''
       );
-    }).toList();//Map iterable to list
+    }).toList();//Convert to a list
   }
 
-  //entry data from snapshot
-  EntryData _entryDataFromSnapshot(DocumentSnapshot snapshot)
+  //Get entry stream
+  Stream<List<Entry>> get entries
   {
-    return EntryData(
-      date: snapshot.data['date'],
-      suds: snapshot.data['suds'],
-      entry: snapshot.data['entry']
-    );
+    return entryCollection.snapshots()
+        .map(_entryListFromSnapshot);
   }
 
-  //Get entries stream
-  Stream<List<Entry>> get entries {
-    return entryCollection.snapshots().map(_entryListFromSnapshot);
-  }
-
-  //Get user document Stream
-  Stream<EntryData> get entryDate
-  {
-    return entryCollection.document(date).snapshots()
-        .map(_entryDataFromSnapshot);
-  }
 }

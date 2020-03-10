@@ -19,8 +19,6 @@ const buttonText = Colors.white;
 const textColor = Colors.black;
 const fontSize = 20.0;
 
-const chartColorA = Colors.blue;
-
 //Spacing between items
 const spacing = 20.0;
 
@@ -35,3 +33,5 @@ const goodSudMax = 3;
 const avgSudMin = 4;
 const avgSudMax = 6;
 
+//Chart Values
+const chartColor = Colors.blue;
