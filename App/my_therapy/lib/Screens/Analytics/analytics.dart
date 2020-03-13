@@ -56,7 +56,9 @@ class _AnalyticsState extends State<Analytics>
           }
 
         else{
-          List<Entry> entry = snapshot.data.documents.map(f);
+          List<Entry> entry = snapshot.data.documents
+              .map((documentSnapshot) => Entry.fromMap(documentSnapshot.data))
+              .toList();
           return _buildChart(context, entry);
         }
       },
