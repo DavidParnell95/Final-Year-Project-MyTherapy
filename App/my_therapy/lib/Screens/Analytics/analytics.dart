@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:my_therapy/Models/entry.dart';
 import 'package:my_therapy/Shared/constants.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:my_therapy/Services/database.dart';
 
 
 class Analytics extends StatefulWidget
@@ -73,6 +72,8 @@ class _AnalyticsState extends State<Analytics>
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: Container(
+        height: 500,
+        padding: EdgeInsets.only(top: 20),
         child: Center(
           child: Column(
             children: <Widget>[
@@ -88,7 +89,7 @@ class _AnalyticsState extends State<Analytics>
               Expanded(
                 child: charts.BarChart(_seriesBarData,
                   animate: true,
-                  animationDuration: Duration(seconds: 5),
+                  animationDuration: Duration(seconds: 1),
                   behaviors: [
 
                     new charts.DatumLegend(

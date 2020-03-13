@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:my_therapy/Models/entry.dart';
 import 'package:my_therapy/Screens/Entries/edit_form.dart';
 import 'package:my_therapy/Shared/constants.dart';
-import 'package:my_therapy/Shared/constants.dart' as prefix0;
 
 class EntryTile extends StatelessWidget{
 
@@ -13,7 +12,7 @@ class EntryTile extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    //Show bottom sheet for editting entry
+    //Show bottom sheet for editing entry
     void _showEditPanel(){
       showModalBottomSheet(context: context, builder: (context){
         return Container(

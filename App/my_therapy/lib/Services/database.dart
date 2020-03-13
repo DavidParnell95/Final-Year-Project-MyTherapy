@@ -6,7 +6,7 @@ class DatabaseService
   final String uid;
   DatabaseService({this.uid});
 
-  //Collection Ref
+  /***** Collection Ref *****/
   //Stores user data
   final CollectionReference userCollection = Firestore.instance.collection('users');
   //Store entry data
@@ -37,7 +37,7 @@ class DatabaseService
     });
   }
 
-  //Entry List from Snapshot
+  /***** Entry List from Snapshot *****/
   //Returns a iterable containing several entries from the collection
   List<Entry> _entryListFromSnapshot(QuerySnapshot snapshot)
   {
@@ -61,4 +61,10 @@ class DatabaseService
         .map(_entryListFromSnapshot);
   }
 
+  /***** Add Entry *****/
+  Future<DocumentReference> newEntry(Map data, String id)
+  {
+    return entryCollection.document(id).updateData(data);
+  }
+  
 }
