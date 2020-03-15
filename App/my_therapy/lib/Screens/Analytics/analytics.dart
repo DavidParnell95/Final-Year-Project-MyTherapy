@@ -72,7 +72,7 @@ class _AnalyticsState extends State<Analytics>
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: Container(
-        height: 500,
+        height: 400,
         padding: EdgeInsets.only(top: 20),
         child: Center(
           child: Column(
@@ -90,16 +90,6 @@ class _AnalyticsState extends State<Analytics>
                 child: charts.BarChart(_seriesBarData,
                   animate: true,
                   animationDuration: Duration(seconds: 1),
-                  behaviors: [
-
-                    new charts.DatumLegend(
-                      entryTextStyle: charts.TextStyleSpec(
-                        color: charts.MaterialPalette.purple.shadeDefault,
-                        fontFamily: 'Georgia',
-                        fontSize: 18
-                      ),
-                    )
-                  ]
                 ),
               )
 

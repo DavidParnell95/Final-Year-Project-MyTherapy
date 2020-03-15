@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_therapy/Services/auth.dart';
 import 'package:my_therapy/Shared/constants.dart';
-import 'package:my_therapy/Shared/constants.dart' as prefix0;
 import 'package:my_therapy/Shared/loading.dart';
 
 class Register extends StatefulWidget

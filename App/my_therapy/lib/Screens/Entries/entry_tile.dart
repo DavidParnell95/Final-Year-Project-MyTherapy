@@ -63,12 +63,12 @@ class EntryTile extends StatelessWidget{
   //Checks suds rating and changes icon accordingly
   IconData checkMood() {
     //If sud is greater than 6
-    if(entry.suds < avgSudMax)
+    if(entry.suds > avgSudMax)
     {
       return Icons.mood_bad;
     }
 
-    //If sud lower than
+    //If sud lower than 4
     else if(entry.suds < avgSudMin)
     {
       return Icons.mood;

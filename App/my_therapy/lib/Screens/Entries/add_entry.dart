@@ -1,8 +1,10 @@
 //New Entry Form
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_therapy/Services/auth.dart';
 import 'package:intl/intl.dart';
+import 'package:my_therapy/Services/database.dart';
 import 'package:my_therapy/Shared/constants.dart';
 
 class AddEntry extends StatefulWidget
@@ -68,8 +70,8 @@ class _AddEntryState extends State<AddEntry>{
                         _dropSelected = newValue;
                       });
                     },
-                    items: <String>['One', 'Two', 'Free', 'Four','Five',
-                      'Six', 'Seven', 'Eight','Nine','Ten']
+                    items: <String>['1', '2', '3', '4','5',
+                      '6', '7', '8','9','10']
                         .map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
@@ -85,13 +87,58 @@ class _AddEntryState extends State<AddEntry>{
                 TextFormField(
                   decoration: entryInputDecoration.copyWith(hintText: "How was your day?"),
                   maxLines: 10,
+
+                  validator: (val) => val.isEmpty ? 'Tell me, how was your day?' : null,
+                  onChanged: (val) => {
+                    setState(() => entry = val)
+                  }
                 ),
 
+                SizedBox(height: spacing),
+
                 Center(
-                  child: RaisedButton(
-                    child: Text("Add Entry",style: TextStyle(color: textColor),),
-                    color: buttonColor,
-                    onPressed: (){},
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(10),
+                      ),
+
+                      //Add Button
+                      FlatButton(
+                        child: Text("Add Entry",style: TextStyle(color: textColor)),
+                        onPressed: (){
+
+                          print(entry);
+                          print(sud);
+
+                          if(entry.isNotEmpty && _dropSelected != null)
+                          {
+                            Firestore.instance.collection('entries').add({
+                              'date' : date,
+                              'suds' : _dropSelected.toString(),
+                              'entry' : entry,
+                              'uid' : (DatabaseService().uid).toString(),
+                            })
+                                .then((result) =>{
+                                  Navigator.pop(context),
+                            }).catchError((err) => print(err));
+                          }
+                        },
+                      ),
+
+                      SizedBox(width: spacing),
+
+                      //Clear Button
+                      RaisedButton(
+                        child: Text("Cancel", style: TextStyle(color: buttonText)),
+                        color: Colors.red,
+                        onPressed: (){
+                          entry ="";
+                          Navigator.pop(context);
+                        },
+                      )
+
+                    ],
                   ),
                 )
 

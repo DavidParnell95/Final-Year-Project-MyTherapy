@@ -62,9 +62,13 @@ class DatabaseService
   }
 
   /***** Add Entry *****/
-  Future<DocumentReference> newEntry(Map data, String id)
-  {
-    return entryCollection.document(id).updateData(data);
+  Future<void> addEntry(String newDate, int newSuds, String newEntry) async{
+    return await entryCollection.document().setData({
+      'date' : newDate,
+      'suds' : newSuds,
+      'entry' : newEntry,
+      'uid' : uid
+    });
   }
   
 }

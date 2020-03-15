@@ -1,7 +1,6 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:my_therapy/Shared/constants.dart';
+import 'package:my_therapy/Shared/constants.dart' as prefix0;
 
 class EditForm extends StatefulWidget
 {
@@ -14,11 +13,15 @@ class _EditFormState extends State<EditForm>
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    final List<String> suds = ['1','2','3','4','5','6','7','8','9','10'];
+    final List<String> suds = ['1', '2', '3', '4','5', '6', '7', '8','9','10'];
 
     //Form Values
     String _currentSuds;
     String _currentEntry;
+    String _currentDate;
+
+    int sud;
+    String _dropDownSelected;
 
     return Form(
       key: _formKey,
@@ -32,28 +35,21 @@ class _EditFormState extends State<EditForm>
 
           //Date
           SizedBox(height: spacing),
-          Text(
-            //TODO show entry date
-            'DATE',
-            style: TextStyle(color: textColor, fontSize: fontSize),
-          ),
+          Text('Date: '),
 
           //SUDS Edit
           SizedBox(height: spacing),
 
           //TODO Fix value change not showing
           DropdownButtonFormField(
-            value: _currentSuds ?? '1',//Tracks value of dropDown
+            value: _currentSuds ?? '5',
             decoration: textInputDecoration,
             items: suds.map((sud){
-
               return DropdownMenuItem(
-                value: sud,//Selected value
+                value: sud,
                 child: Text('$sud'),
               );
-
-            }).toList(),//Converts from iterable -> list
-
+            }).toList(),
             onChanged: (val) => setState(() => _currentSuds = val),
           ),
 
@@ -80,7 +76,8 @@ class _EditFormState extends State<EditForm>
                     fontSize: fontSize),
                 ),
                 onPressed: (){
-
+                  print(sud);
+                  print(_currentEntry);
                 },
               ),
 
@@ -94,8 +91,7 @@ class _EditFormState extends State<EditForm>
                 ),
                 onPressed: () async
                 {
-                  print(_currentSuds);
-                  print(_currentEntry);
+
                 },
               ),
             ],
