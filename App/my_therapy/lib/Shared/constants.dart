@@ -13,6 +13,8 @@ const entryInputDecoration = InputDecoration(
   )
 );
 
+const appBarColor = Colors.lightBlue;
+
 const buttonColor = Colors.lightBlue;
 const buttonText = Colors.white;
 

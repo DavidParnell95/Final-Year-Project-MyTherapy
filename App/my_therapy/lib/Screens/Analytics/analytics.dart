@@ -99,6 +99,4 @@ class _AnalyticsState extends State<Analytics>
       ),
     );
   }
-
-
 }
