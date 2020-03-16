@@ -5,6 +5,7 @@ import 'package:my_therapy/Shared/constants.dart';
 import 'package:my_therapy/Screens/Entries/add_entry.dart';
 import 'package:my_therapy/Services/auth.dart';
 import 'package:my_therapy/Shared/constants.dart' as prefix0;
+import 'package:my_therapy/Shared/settings.dart';
 import 'package:toast/toast.dart';
 
 class Home extends StatelessWidget
@@ -131,11 +132,9 @@ class Home extends StatelessWidget
                       borderRadius: new BorderRadius.circular(30.0)
                   ),
                   onPressed: (){
-                    Toast.show(
-                      "UNDER CONSTRTUCTION",
+                    Navigator.push(
                       context,
-                      duration: Toast.LENGTH_SHORT,
-                      gravity: Toast.BOTTOM
+                      new MaterialPageRoute(builder: (ctxt) => new Settings()),
                     );
                   },
                 ),

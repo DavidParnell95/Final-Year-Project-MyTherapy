@@ -14,6 +14,7 @@ const entryInputDecoration = InputDecoration(
 );
 
 const appBarColor = Colors.lightBlue;
+const titleColor = Colors.white;
 
 const buttonColor = Colors.lightBlue;
 const buttonText = Colors.white;
