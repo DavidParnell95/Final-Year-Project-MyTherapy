@@ -4,9 +4,7 @@ import 'package:my_therapy/Screens/Entries/view_entries.dart';
 import 'package:my_therapy/Shared/constants.dart';
 import 'package:my_therapy/Screens/Entries/add_entry.dart';
 import 'package:my_therapy/Services/auth.dart';
-import 'package:my_therapy/Shared/constants.dart' as prefix0;
-import 'package:my_therapy/Shared/settings.dart';
-import 'package:toast/toast.dart';
+import 'package:my_therapy/Shared/Settings/settings.dart';
 
 class Home extends StatelessWidget
 {
@@ -24,7 +22,7 @@ class Home extends StatelessWidget
             icon: Icon(Icons.person, color: buttonText),
             label: Text(
               "Logout",
-              style: TextStyle(color: prefix0.buttonText),
+              style: TextStyle(color: buttonText),
             ),
             onPressed: () async{
               await _auth.logOut();
