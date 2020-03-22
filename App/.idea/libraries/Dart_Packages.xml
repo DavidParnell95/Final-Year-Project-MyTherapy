@@ -156,6 +156,13 @@
             </list>
           </value>
         </entry>
+        <entry key="hive_flutter">
+          <value>
+            <list>
+              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/hive_flutter-0.2.1/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="image">
           <value>
             <list>
@@ -395,6 +402,7 @@
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_settings_screens-0.1.0+0.2/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_spinkit-4.1.0/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/hive-1.4.1+1/lib" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/hive_flutter-0.2.1/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/image-2.1.4/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.16.0/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/logging-0.11.4/lib" />

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_settings_screens/flutter_settings_screens.dart';
-import 'package:my_therapy/Shared/constants.dart';
+
+import '../constants.dart';
 
 class AppSettings extends StatefulWidget
 {
@@ -15,7 +16,6 @@ class _AppSettingsState extends State<AppSettings>
 
     return Container(
       child: SettingsScreen(
-          title:"App Settings",
         children: <Widget>[
 
           SettingsTileGroup(

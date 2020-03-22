@@ -143,12 +143,19 @@ packages:
     source: sdk
     version: "0.0.0"
   hive:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: hive
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.4.1+1"
+  hive_flutter:
+    dependency: "direct main"
+    description:
+      name: hive_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.1"
   image:
     dependency: transitive
     description:

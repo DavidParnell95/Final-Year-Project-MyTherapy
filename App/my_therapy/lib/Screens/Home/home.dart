@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:my_therapy/Screens/Analytics/analytics.dart';
 import 'package:my_therapy/Screens/Entries/view_entries.dart';
+import 'package:my_therapy/Shared/Settings/settings_page.dart';
 import 'package:my_therapy/Shared/constants.dart';
 import 'package:my_therapy/Screens/Entries/add_entry.dart';
 import 'package:my_therapy/Services/auth.dart';
-import 'package:my_therapy/Shared/Settings/settings.dart';
+import 'package:my_therapy/Shared/Settings/settings_page.dart';
 
 class Home extends StatelessWidget
 {
@@ -132,7 +133,7 @@ class Home extends StatelessWidget
                   onPressed: (){
                     Navigator.push(
                       context,
-                      new MaterialPageRoute(builder: (ctxt) => new Settings()),
+                      new MaterialPageRoute(builder: (ctxt) => new SettingsPage()),
                     );
                   },
                 ),
