@@ -1,3 +1,4 @@
+import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:my_therapy/Screens/Analytics/analytics.dart';
 import 'package:my_therapy/Screens/Entries/view_entries.dart';
@@ -13,17 +14,15 @@ class Home extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
         elevation: 0.0,
         actions: <Widget>[
           FlatButton.icon(
-            icon: Icon(Icons.person, color: buttonText),
+            icon: Icon(Icons.person),
             label: Text(
               "Logout",
-              style: TextStyle(color: buttonText),
             ),
             onPressed: () async{
               await _auth.logOut();
@@ -85,7 +84,6 @@ class Home extends StatelessWidget
                 width: 150,
 
                 child: FlatButton.icon(
-                  color: Colors.lightBlue,
                   icon: Icon(Icons.note_add, color: buttonText),
                   label: Text(
                       "Add Entry",
