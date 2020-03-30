@@ -16,6 +16,7 @@ const setupUI = (user) => {
             //Show admin ui elements
             adminItems.forEach(item => item.style.display = 'block');
         }
+        
         //account
         db.collection('users')
         .doc(user.uid).get().then(doc =>

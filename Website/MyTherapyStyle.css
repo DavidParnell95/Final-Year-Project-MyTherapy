@@ -1,5 +1,14 @@
-head{
-	width: 100%;
+body{
+  background: url("Images/background1.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.link{
+  color: #ffffff;
+  background-color: #343a40;
 }
 
 ul {
@@ -33,31 +42,6 @@ li a:hover {
   color: #000000;
 }
 
-.sidebar{
-  width: 80%;
-}
-
-.sidenav {
-  height: 400%;
-  width: 110%;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  overflow-x: hidden;
-}
-
-.sidenav a {
-  padding-top: 6px;
-  text-decoration: none;
-  text-align: left;
-  font-size: 18px;
-  color: #ffffff;
-  display: block;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
 
 .col{
 	float: left;
@@ -104,6 +88,7 @@ input[type=text]:focus {
 
 .title
 {
+  padding-right: 30px;
   color: #f1f1f1;
   font-size: xx-large;
 }
@@ -135,26 +120,20 @@ input[type=text]:focus {
 
 .scroll-header
 {
-  width: 41.5%;
+  width: 50%;
   color: #ffffff;
-  background-color: #333;
-  font-size: x-large;
+  background-color: #343a40;
+  border: 1px solid black;
 }
 
 .scroll-entries
 {
   border: 1px solid black;
-  width: 41.5%;
+  width: 50%;
   height: 100%;
   overflow: scroll;
 }
 
-.container{
-  width: 81%;
-  background-color: #ffffff;
-  margin-top: 40px;
-  overflow: auto;
-}
 
 .entries
 {
@@ -162,10 +141,13 @@ input[type=text]:focus {
   font-size: large;
 }
 
+.spacer{
+  border-bottom: 1px solid black;
+}
 
 
 .quickAdd{
-  background-color: #555;
+  background-color: #343a40;
   color: #ffffff;
   padding: 10px 10px;
   text-align: center;
@@ -187,9 +169,7 @@ input[type=text]:focus {
 
 
 .collapsible {
-  width: 200%;
   color: black;
-  cursor: pointer;
   padding: 18px;
   border-bottom: 1px solid #555;
   text-align: left;
@@ -197,17 +177,12 @@ input[type=text]:focus {
   font-size: 20px;
 }
 
-.active, .collapsible:hover {
-  background-color: #555;
-  color: #ffffff;
+.collapsible-header{
+  cursor: pointer;
+  width: 100%;
 }
 
-.content {
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #ffffff;
-}
+
 
 .btn{
   background-color: #555;
@@ -259,4 +234,14 @@ input[type=text]:focus {
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+}
+
+.disclaimer{
+  font-weight: bold;
+  color: red;
+}
+
+.CreatePatient{
+  width: 50%;
+  border-right: 1px solid black;
 }

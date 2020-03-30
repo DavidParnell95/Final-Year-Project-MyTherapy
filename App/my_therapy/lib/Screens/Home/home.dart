@@ -32,7 +32,6 @@ class Home extends StatelessWidget
       ),
 
       body: Container(
-        padding: EdgeInsets.all(10) ,
         child:Center(
           child: Column(
           children: <Widget>[
@@ -46,122 +45,126 @@ class Home extends StatelessWidget
             ),
             SizedBox(height: 30),
 
-            Row(
-              children: <Widget>[
-              SizedBox(height: 30),
+            Container(
+              padding: EdgeInsets.only(top: 50,left: 20 ,right: 20),
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      //View Entries
+                      SizedBox(
+                        height: 150,
+                        width: 150,
 
-              //View Entries
-              SizedBox(
-                height: 200,
-                width: 150,
+                        child: FlatButton.icon(
+                            color: Colors.lightBlue,
+                            icon: Icon(Icons.description, color: buttonText),
+                            label: Text(
+                              "View Entries",
+                              style: TextStyle(color: buttonText),
+                            ),
 
-                child: FlatButton.icon(
-                color: Colors.lightBlue,
-                icon: Icon(Icons.description, color: buttonText),
-                label: Text(
-                  "View Entries",
-                  style: TextStyle(color: buttonText),
-                ),
+                            //Button shape
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0),
+                            ),
 
-                //Button shape
-                shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(30.0),
-                ),
+                            onPressed: (){
+                              Navigator.push(
+                                  context,
+                                  new MaterialPageRoute(builder: (ctxt) => new ViewEntries()));
+                            }
+                        ),
+                      ),
 
-                onPressed: (){
-                  Navigator.push(
-                  context,
-                  new MaterialPageRoute(builder: (ctxt) => new ViewEntries()));
-                  }
-                ),
+                      //Add Entry
+                      SizedBox(width: 45),
+                      SizedBox(
+
+                          height: 150,
+                          width: 150,
+
+                          child: FlatButton.icon(
+                            icon: Icon(Icons.note_add),
+                            label: Text(
+                              "Add Entry",
+                            ),
+
+                            //Button shape
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0),
+                            ),
+                            onPressed: (){
+                              //Navigate to Add Entry
+                              Navigator.push(
+                                context,
+                                new MaterialPageRoute(builder: (ctxt) => new AddEntry()),
+                              );
+                            },
+                          )
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 50),
+
+                  Row(
+                    children: <Widget>[
+                      //Settings
+                      SizedBox(
+                        height: 150,
+                        width: 150,
+
+                        child: FlatButton.icon(
+                          color: Colors.lightBlue,
+                          icon: Icon(Icons.settings,color: buttonText),
+                          label: Text(
+                            "Settings",
+                            style: TextStyle(color: buttonText),
+                          ),
+
+                          //Button shape
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0)
+                          ),
+                          onPressed: (){
+                            Navigator.push(
+                              context,
+                              new MaterialPageRoute(builder: (ctxt) => new SettingsPage()),
+                            );
+                          },
+                        ),
+                      ),
+
+                      //analytics button
+                      SizedBox(width: 45),
+                      SizedBox(
+                        height: 150,
+                        width: 150,
+
+                        child: FlatButton.icon(
+                          color: Colors.lightBlue,
+                          icon: Icon(Icons.assessment,color: buttonText),
+                          label: Text(
+                            "Analytics",
+                            style: TextStyle(color: buttonText),
+                          ),
+
+                          //Button shape
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0)
+                          ),
+                          onPressed: (){
+                            Navigator.push(context,
+                                new MaterialPageRoute(builder: (ctxt) => new Analytics()));
+                          },
+                        ),
+                      ),
+                    ],),
+                ],
               ),
-
-                //Add Entry
-                SizedBox(width: 32.5),
-                SizedBox(
-
-                height: 200,
-                width: 150,
-
-                child: FlatButton.icon(
-                  icon: Icon(Icons.note_add, color: buttonText),
-                  label: Text(
-                      "Add Entry",
-                      style: TextStyle(color: buttonText)
-                  ),
-
-                  //Button shape
-                  shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(30.0),
-                  ),
-                  onPressed: (){
-                    //Navigate to Add Entry
-                    Navigator.push(
-                      context,
-                      new MaterialPageRoute(builder: (ctxt) => new AddEntry()),
-                    );
-                  },
-                )
             ),
             ],
-            ),
-
-            SizedBox(height: 30),
-
-            Row(
-              children: <Widget>[
-              //Settings
-              SizedBox(height: 20),
-              SizedBox(
-                height: 200,
-                width: 150,
-
-                child: FlatButton.icon(
-                  color: Colors.lightBlue,
-                  icon: Icon(Icons.settings,color: buttonText),
-                  label: Text(
-                    "\n Settings",
-                    style: TextStyle(color: buttonText),
-                  ),
-
-                  //Button shape
-                  shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(30.0)
-                  ),
-                  onPressed: (){
-                    Navigator.push(
-                      context,
-                      new MaterialPageRoute(builder: (ctxt) => new SettingsPage()),
-                    );
-                  },
-                ),
-                ),
-
-            //analytics button
-            SizedBox(width: 32),
-            SizedBox(
-              height: 200,
-              width: 150,
-
-              child: FlatButton.icon(
-                color: Colors.lightBlue,
-                icon: Icon(Icons.assessment,color: buttonText),
-                label: Text(
-                  "\n Analytics",
-                  style: TextStyle(color: buttonText),
-                ),
-
-                //Button shape
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(30.0)
-                ),
-                onPressed: (){
-                  Navigator.push(context, 
-                  new MaterialPageRoute(builder: (ctxt) => new Analytics()));
-                },
-              ),
-            ),
-            ],),],
         ),
       ),
 

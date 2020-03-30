@@ -11,16 +11,14 @@ const setupEntries = (data) => {
             const entry = doc.data();
             const li = `
             <li>
-                <div class="collContainer">
-                    <button type="button" class="collapsible">
+                    <div class="collapsible-header">
                         Date: ${entry.date} 
                         SUDs: ${entry.suds}
-                    </button>
+                    </div>
                 
-                    <div class="content">
+                    <div class="collapsible-body">
                         <p>${entry.entry}</p>
                     </div>
-                </div>
             </li>
             `;
             html += li;
@@ -42,3 +40,12 @@ const setupEntries = (data) => {
     }
 
 };
+
+// setup materialize components
+document.addEventListener('DOMContentLoaded', function() {
+  
+    var items = document.querySelectorAll('.collapsible');
+    M.Collapsible.init(items);
+  
+  });
+  

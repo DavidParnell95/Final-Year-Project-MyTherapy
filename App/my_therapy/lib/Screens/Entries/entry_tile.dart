@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:my_therapy/Models/entry.dart';
 import 'package:my_therapy/Screens/Entries/edit_form.dart';
 import 'package:my_therapy/Shared/constants.dart';
@@ -27,35 +28,25 @@ class EntryTile extends StatelessWidget{
 
       child: Card(
         margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
-
-        //Entry item
-        child: ListTile(
-
-          //Left side icon
+        child: ExpansionTile(
           leading: Icon(
             checkMood(),
             size: 40.0,
           ),
-
-          //Date
-          title: Text(
-            entry.date,
-            style: TextStyle( color: textColor, fontSize: fontSize),
-          ),
-
-          //Suds
-          subtitle: Text(
-            entry.suds.toString(),
-            style: TextStyle(color: textColor, fontSize: fontSize),
-          ),
-
-          //Edit button
-          trailing: IconButton(
-            icon: Icon(Icons.edit),
-            onPressed:()=> _showEditPanel(),
-          ),
-
+          title: Text(entry.date + "                " +entry.suds.toString() ),
+          trailing: Icon(Icons.arrow_drop_down),
+          children: <Widget>[
+            Text(entry.entry),
+            FlatButton.icon(
+                onPressed: (){
+                  _showEditPanel();
+                },
+                icon: Icon(Icons.edit),
+                label: Text("Edit")
+            )
+          ],
         ),
+
       ),
     );
   }

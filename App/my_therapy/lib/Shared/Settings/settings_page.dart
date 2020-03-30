@@ -16,11 +16,23 @@ class SettingsPage extends StatefulWidget
 
 class _settingsPageState extends State<SettingsPage>{
 
+  ///App Bar Color
   ColorSwatch _tempMainColor;//App Bar Color
   Color _tempShadeColor;
   ColorSwatch _mainColor = Colors.blue;
   Color _shadeColor = Colors.blue[800];
 
+  ///Background Color
+  ColorSwatch _tempBGMainColor;
+  Color _tempBGShadeColor;
+  ColorSwatch _mainBGColor= Colors.grey;
+  Color _shadeBGColor = Colors.grey[500];
+
+  ///Font Color
+  ColorSwatch _tempTXTMainColor;
+  Color _tempTXTShadeColor;
+  ColorSwatch _mainTXTColor = Colors.grey;
+  Color _shadeTXTColor = Colors.grey[900];
 
   @override
   Widget build(BuildContext context) {
@@ -64,32 +76,56 @@ class _settingsPageState extends State<SettingsPage>{
                 defaultVal: false,
                 onEnable: (){
                   print("Low Contrast Mode: ENABLED");
+                  PrefService.setBool('ColoringEnabled', true);
                   DynamicTheme.of(context).setBrightness(Brightness.dark);
                 },
                 onDisable: (){
                   print("Low Contrast Mode: DISABLED");
+                  PrefService.setBool('ColoringEnabled', false);
                   DynamicTheme.of(context).setBrightness(Brightness.light);
                 },
               ),
         ),
 
-        ///App Bar Color
-        Card(
-          child: FlatButton.icon(
-            onPressed: _openPicker,
-            label: Text("App Bar Color"),
-            icon: Icon(Icons.palette),
-          )
-        ),
+        PreferenceHider([
+          Center(
+              child: Column(
+                children: <Widget>[
+                  Card(
+                      child: FlatButton.icon(
+                        padding: EdgeInsets.symmetric(horizontal: 127.5),
+                        onPressed: _openPicker,
+                        label: Text("App Bar Color"),
+                        icon: Icon(Icons.palette),
+                      )
+                  ),
 
-        ///Background Color
-        Card(
-            child: FlatButton.icon(
-              onPressed: (){},
-              label: Text("Background Color"),
-              icon: Icon(Icons.palette),
-            )
-        )
+                  ///Background Color
+                  Card(
+                      child: FlatButton.icon(
+                        padding: EdgeInsets.symmetric(horizontal: 115),
+                        onPressed:_openBGPicker,
+                        label: Text("Background Color"),
+                        icon: Icon(Icons.format_color_fill),
+                      )
+                  ),
+
+                  ///Text color
+                  Card(
+                    child: FlatButton.icon(
+                      padding: EdgeInsets.symmetric(horizontal: 139),
+                      onPressed: _openTXTPicker,
+                      label: Text("Text Color"),
+                      icon: Icon(Icons.format_color_text),
+                    ),
+                  )
+
+                ],
+              )
+          )
+
+        ], 'ColoringEnabled'),
+
     ]),
     );
   }
@@ -97,7 +133,7 @@ class _settingsPageState extends State<SettingsPage>{
   /// App Bar Dialogue Boxes
   void _openPicker() async {
     _openDialog(
-        "Background Color",
+        "App Bar Color",
         MaterialColorPicker(
           selectedColor: _shadeColor,
           onColorChange: (color) => setState(() =>
@@ -140,20 +176,128 @@ class _settingsPageState extends State<SettingsPage>{
     );
   }
 
-  /// Color change functions
   //Change the App Bar color
   void changeAppBarColor(color){
-    DynamicTheme.of(context).setThemeData(new ThemeData(
+    DynamicTheme.of(context).setThemeData(ThemeData(
         primaryColor: Theme.of(context).primaryColor == Colors.indigo? Colors.red: color,
+    ));
+    print("App Bar change to: " + color.toString());
+  }
+
+  ///Change Background Color
+  void _openBGPicker() async{
+    _openBGDialog(
+      "Background Color",
+      MaterialColorPicker(
+        selectedColor: _shadeBGColor,
+        onColorChange: (color) => setState(() =>
+        _tempBGShadeColor = color,
+        ),
+        onMainColorChange: (color) => setState(() => _tempBGMainColor =color),
+      )
+    );
+  }
+
+  void _openBGDialog(String title, Widget content) {
+    showDialog(
+        context: context,
+        builder: (_) {
+          return AlertDialog(
+            contentPadding: const EdgeInsets.all(6.0),
+            title: Text(title),
+            content: content,
+            actions: [
+              FlatButton(
+                child: Text('CANCEL'),
+                onPressed: Navigator
+                    .of(context)
+                    .pop,
+              ),
+              FlatButton(
+                child: Text('SUBMIT'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  setState(() => _mainBGColor = _tempBGMainColor);
+                  setState(() => _shadeBGColor = _tempBGShadeColor);
+
+                  changeBackgroundColor(_mainBGColor);
+                },
+              ),
+            ],
+          );
+        }
+    );
+  }
+
+  void changeBackgroundColor(color)
+  {
+    DynamicTheme.of(context).setThemeData(ThemeData(
+      scaffoldBackgroundColor: Theme.of(context).scaffoldBackgroundColor == Colors.indigo? Colors.red: color,
+    ));
+    print("Background changed to: " + color.toString());
+  }
+
+
+  /// Font Color
+  void _openTXTPicker() async
+  {
+    _openTXTDialog(
+      "Text Color",
+      MaterialColorPicker(
+        selectedColor: _shadeTXTColor,
+        onColorChange: (txtColor) => setState(() =>
+        _tempTXTShadeColor = txtColor),
+        onMainColorChange: (txtColor) => setState(() => _tempTXTMainColor),
+      )
+    );
+  }
+
+  void _openTXTDialog(String title, Widget content) {
+    showDialog(
+      context: context,
+      builder: (_){
+        return AlertDialog(
+          contentPadding: const EdgeInsets.all(6.0),
+          title: Text(title),
+          content: content,
+          actions: <Widget>[
+            FlatButton(
+              child: Text('CANCEL'),
+              onPressed: Navigator
+                  .of(context)
+                  .pop,
+            ),
+
+            FlatButton(
+              child: Text('Sumbit'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                setState(() => _mainColor = _tempBGMainColor);
+                setState(() => _shadeBGColor = _tempBGShadeColor);
+
+                changeTextColor(_mainTXTColor);
+              }
+            )
+          ],
+        );
+      }
+    );
+  }
+
+  void changeTextColor(TXTColor) {
+    DynamicTheme.of(context).setThemeData(ThemeData(
+
+    ));
+
+    print("Text Color changed to: " + TXTColor.toString());
+  }
+
+  /// Font Size
+  void changeFontSize()
+  {
+    DynamicTheme.of(context).setThemeData(ThemeData(
     ));
   }
 
-  //Change Background Color
-  void changeBackgroundColor(color)
-  {
-    DynamicTheme.of(context).setThemeData(new ThemeData(
-      scaffoldBackgroundColor: Theme.of(context).scaffoldBackgroundColor == Colors.indigo? Colors.red: color,
-    ));
-  }
 
 }

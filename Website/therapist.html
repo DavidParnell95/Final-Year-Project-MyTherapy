@@ -9,80 +9,124 @@
 </head>
 
 <body>
-	<nav class = "col-sm-14">
-		<ul>
-			<li></li>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+		  <a class="navbar-brand" href="Home.html"><i class="fa fa-home"></i> MyTherapy</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+		  <div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+			  <!-- Account Details-->
+			  <li class="nav-item logged-in" style="display: none;">
+				<a href="#" class="link modal-trigger" data-target="modal-account"><i class="fa fa-id-card" aria-hidden="true"></i> Account</a>
+			  </li>
 
-			<li class="title">
-				MyTherapy
-			</li>
+			  <!-- Logout-->
+			  <li class="nav-item logged-in" style="display: none;">
+				<a href="#" id="logout" class="link"><i class="fa fa-user-circle" aria-hidden="true"></i> Logout</a>
+			  </li>
 
-			<!-- Home-->
-			<li class="logged-in"style="display: none">
-				<a class="active"><i class="fa fa-fw fa-home"></i> Home</a>
-			</li>
+			  <!-- Log in-->
+			  <li class="nav-item logged-out" style="display: none;">
+				<a href="#" class="link modal-trigger" data-target="modal-login"><i class="fa fa-user-circle" aria-hidden="true"></i> Log in</a>
+			  </li>
 
-			<!-- View Entries-->
-			<li class="logged-in"style="display: none">
-				<a href="ViewEntries.html"><i class="fa fa-list-alt" aria-hidden="true"></i> View Entries</a>
-			</li>
+			  <!-- Apply -->
+			  <li class="nav-item logged-out" style="display: none;">
+				<a href="#" class="link modal-header" data-target="modal-signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Apply</a>
+				</li> 
 
-			<!-- Analytics-->
-			<li class="logged-in"style="display: none">
-				<a href="#Analytics.html"><i class="fa fa-bar-chart" aria-hidden="true"></i> Analytics</a>
-			</li>
+				<!-- Therapist Section-->
+				<li class="admin" style="display: none;">
+					<a href="therapist.html" class="link"><i class="fa fa-" aria-hidden="true">Patient Management</i></a>
+				</li>
 
-			<!-- Settings-->
-			<li class="logged-in"style="display: none">
-				<a href="#Settings.html"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
-			</li>
-
-			<!-- Account -->
-			<li class="logged-in" style="display: none">
-				<a href="#" class="grey-text modal-trigger" data-target="modal-account"><i class="fa fa-id-card" aria-hidden="true"></i> Account</a>
-			</li>
-
-			<!-- Logout -->
-			<li class="logged-in"style="display: none">
-				<a href="#" id="logout"><i class="fa fa-user-circle" aria-hidden="true"></i> Logout</a>
-			</li>
-
-			<!-- Log in -->
-			<li class="logged-out"style="display: none">
-				<a href="#" class="grey-text modal-trigger" data-target="modal-login"><i class="fa fa-user-circle" aria-hidden="true"></i> Login</a>
-			</li>
-
-			<!-- Apply-->
-			<li class="logged-out"style="display: none">
-				<a href="#" class="grey-text modal-trigger" data-target="modal-signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</a>
-			</li>
-
-			<!-- Therapist Section-->
-			<li class="admin" style="display: none;">
-				<a href="therapist.html"><i class="fa fa-" aria-hidden="true">Patient Management</i></a>
-			</li>
-
-			<!-- Super User page-->
-			<li class="super" style="display: none;">
-				<a href="superzone.html"><i class="fa fa-wrench" aria-hidden="true">Maintenance</i></a>
-			</li>
-		</ul>
-	<!-- End Nav Bar--> 	
-    </nav>
-    
-    <div class="row">
-		<div class="col-sm-2 sidebar">
-			<div class="sidenav">
-
-				
+				<!-- Super User page-->
+				<li class="super" style="display: none;">
+					<a href="superzone.html" class="link"><i class="fa fa-wrench" aria-hidden="true">Maintenance</i></a>
+				</li>
+			</ul>
+		  </div>
+		</div>
+	  </nav>
+	
+	<!-- SIGN UP MODAL -->
+	<div id="modal-signup" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="close">&times;</span>
+				<h4>Sign up</h4>
 			</div>
-        </div>
-		
-		<!-- Entry List -->
-        <div class="col-sm-8">
+		  
+			<!-- Email -->
+		  	<form id="signup-form">
+			<div class="input-field">
+			  <input type="email" id="signup-email" required />
+			  <label for="signup-email">Email address</label>
+			</div>
+
+			<!-- Name -->
+			<div class="input-field">
+				<input type="text" id="signup-name" required />
+				<label for="signup-name">Name</label>
+			</div>
+			
+			<!-- Institution field-->
+			<div class="input-field">
+				<input type="text" id="signup-inst" required />
+				<label for="signup-inst">Institution</label>
+			</div>
+
+			<!-- Inst Address-->
+			<div class="input-field">
+				<input type="text" id="signup-addr" required />
+				<label for="signup-addr">Institution Address</label>
+			</div>
+
+			<!-- password-->
+			<div class="input-field">
+				<input type="password" id="signup-password" required />
+				<label for="signup-password">Choose password</label>
+			</div>
+
+			<button class="btn">Sign up</button>
+		  </form>
+		</div>
+	</div>
+
+	  <!-- Account Modal-->
+	  <div id="modal-account" class="modal">
+		  <div class=" modal-content center-align">
+			  <h4>Account Details</h4>
+			  <div class="account-details"></div>
+		  </div>
+	  </div>
+
+	  <!-- LOGIN MODAL -->
+	  <div id="modal-login" class="modal">
+		<div class="modal-content">
+		  <h4>Login</h4><br />
+		  <form id="login-form">
+			<div class="input-field">
+			  <input type="email" id="login-email" required />
+			  <label for="login-email">Email address</label>
+			</div>
+			<div class="input-field">
+			  <input type="password" id="login-password" required />
+			  <label for="login-password">Your password</label>
+			</div>
+			<button class="btn yellow darken-2 z-depth-0">Login</button>
+		  </form>
+		</div>
+	  </div>
+
+	  <div class="container">
+		<div class="card border-0 shadow my-5">
+		  <div class="card-body p-5 logged-in">
 
             <!-- Patient creation panel -->
-            <div class="Create Patient">
+            <div class="CreatePatient">
                 <div class="header">
                     <h4>New Patient</h4>
                 </div>
@@ -114,7 +158,9 @@
                     <button class="btn">Create Patient</button>
                 </form>
 			</div>
+			</div>
 		</div>
+	</div>
 
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
