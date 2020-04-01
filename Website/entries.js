@@ -12,7 +12,7 @@ const setupEntries = (data) => {
             const li = `
             <li>
                     <div class="collapsible-header">
-                        Date: ${entry.date} 
+                        Date: ${entry.date} <nbsp>
                         SUDs: ${entry.suds}
                     </div>
                 
