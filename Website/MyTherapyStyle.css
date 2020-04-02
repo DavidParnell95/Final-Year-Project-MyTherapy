@@ -273,8 +273,8 @@ input[type=text]:focus {
 }
 
 .carousel{
-  width: 1015px;
-  height: 600px;
+  width: 80%;
+  height: 100%;
 }
 
 .cap{
@@ -287,4 +287,7 @@ input[type=text]:focus {
   padding-top: 5px;
   padding-bottom: 5px;
   border-bottom: 1px solid black;
+}
+
+.about-section{
 }

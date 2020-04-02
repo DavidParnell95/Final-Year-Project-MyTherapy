@@ -138,6 +138,39 @@ if(signupForm)
     });
 }
 
+// Create Patient Account
+const newPatientForm = document.querySelector('#NewPatient');
+
+if(newPatientForm)
+{
+
+    newPatientForm.addEventListener('submit',(e) => {
+
+        e.preventDefault();
+        //Get user info from form
+        const email = newPatientForm['patient-email'].value;//emailconst instAdd = signupForm['signup-InstAdd'].value;//institution address
+        const passwrd = newPatientForm['patient-password'].value;//password
+
+        console.log(email);
+
+        //Sign up the user
+        //Async therefore must wait for it to complete
+        auth.createUserWithEmailAndPassword(email,passwrd).then(cred =>{
+            console.log(cred);
+            
+            //Create entry in users collection
+            //takes credential and access the user from that 
+            return db.collection('users').doc(cred.user.uid).set({
+                name: newPatientForm['patient-name'].value,
+            });
+
+            
+        }).then(() => {
+            newPatientForm.reset();
+        });
+    });
+}
+
 //logout
 //Get log in button from page
 const logout = document.querySelector('#logout');
