@@ -10,7 +10,7 @@ const setupEntries = (data) => {
         data.forEach(doc => {
             const entry = doc.data();
             const li = `
-            <li>
+            <li class="coll-container">
                     <div class="collapsible-header">
                         Date: ${entry.date} <nbsp>
                         SUDs: ${entry.suds}
