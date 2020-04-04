@@ -1,4 +1,3 @@
-import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:preferences/preferences.dart';
 import 'package:my_therapy/Screens/wrapper.dart';
@@ -6,6 +5,8 @@ import 'package:my_therapy/Services/auth.dart';
 import 'package:my_therapy/Models/user.dart';
 
 import 'package:provider/provider.dart';
+import 'package:theme_provider/theme_provider.dart';
+import 'package:my_therapy/Shared/themes.dart';
 
 //Initializes Settings
 main() async {
@@ -26,18 +27,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     print("main");
 
-    return new DynamicTheme(
-      defaultBrightness: Brightness.light,
-      data:  (brightness) => new ThemeData(brightness: brightness, accentColor: Colors.blue),
-      themedWidgetBuilder: (context, theme){
-        return StreamProvider<User>.value(
+    return new ThemeProvider(
+        saveThemesOnChange: true,
+        loadThemeOnInit: true,
+        themes: <AppTheme>[
+          AppTheme.light(),
+          AppTheme.dark(),
+          customAppTheme(),
+          RGBAppTheme(),
+        ],
+
+        child: StreamProvider<User>.value(
           value: AuthService().user,
           child: MaterialApp(
-            theme: theme,
             home: Wrapper(),
           ),
-        );
-      },
+        )
     );
   }
 }

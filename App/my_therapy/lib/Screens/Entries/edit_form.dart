@@ -90,7 +90,7 @@ class _EditFormState extends State<EditForm>
                 ),
                 onPressed: () async
                 {
-
+                  Navigator.pop(context);
                 },
               ),
             ],

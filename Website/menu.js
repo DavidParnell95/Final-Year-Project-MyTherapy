@@ -29,8 +29,8 @@ const setupUI = (user) => {
                 <div>
                     <div>User: ${doc.data().name}</div>
                     <div>${user.admin ? 'Admin' : ''}</div>
-                    <div>Institution:${doc.data().institution}</div>
-                    <div>Institution Address:${doc.data().instAddress}</div>
+                    <div>Institution:${doc.data().institution ? doc.data().institution != null:''}</div>
+                    <div>Institution Address:${doc.data().instAddress ? doc.data().instAddress != null: ''}</div>
                 </div>
                 `;
                 

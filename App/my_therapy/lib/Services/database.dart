@@ -48,8 +48,7 @@ class DatabaseService
       return Entry(
         date: doc.data['date'] ?? '',
         suds: doc.data['suds'] ?? 5,
-        entry: doc.data['entry'] ?? '',
-        uid: doc.data['uid'] ?? ''
+        entry: doc.data['entry'] ?? ''
       );
     }).toList();//Convert to a list
   }
@@ -66,8 +65,7 @@ class DatabaseService
     return await entryCollection.document().setData({
       'date' : newDate,
       'suds' : newSuds,
-      'entry' : newEntry,
-      'uid' : uid
+      'entry' : newEntry
     });
   }
   

@@ -22,7 +22,6 @@ class _EntryListState extends State<EntryList>
       print(entries.date);
       print(entries.suds);
       print(entries.entry);
-      print(entries.uid);
     });
 
     return ListView.builder(

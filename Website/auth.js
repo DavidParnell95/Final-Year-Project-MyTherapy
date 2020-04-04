@@ -70,23 +70,26 @@ auth.onAuthStateChanged(user =>{
 const createForm = document.querySelector('#create-form');
 if(createForm)
 {
+    user = auth.user;
+    console.log(user);
     createForm.addEventListener('submit', (e) =>{
         e.preventDefault();
     
+        console.log(createForm.suds.value); 
         //Get current date
         var date = new Date();
     
         var dd = String(date.getDate()).padStart(2, '0');//get days
         var mm = String(date.getMonth() + 1).padStart(2, '0'); //get month, January is 0!
         var yyyy = date.getFullYear();//get year
-    
+
         date = dd + '/' + mm + '/' + yyyy;//store in date
     
         //Create new record in collection
         db.collection('entries').add({
             date: date,//date = date calculated above ^ 
-            suds: createForm['suds'].value,//suds = value from drop down
-            entry: createForm['summary'].value,
+            suds: createForm.suds.value,//suds = value from drop down
+            entry: createForm.summary.value,
         }).then(() => {
             
             //close modal & reset form
@@ -157,14 +160,6 @@ if(newPatientForm)
         //Async therefore must wait for it to complete
         auth.createUserWithEmailAndPassword(email,passwrd).then(cred =>{
             console.log(cred);
-            
-            //Create entry in users collection
-            //takes credential and access the user from that 
-            return db.collection('users').doc(cred.user.uid).set({
-                name: newPatientForm['patient-name'].value,
-            });
-
-            
         }).then(() => {
             newPatientForm.reset();
         });
@@ -201,7 +196,7 @@ if(loginForm)
             //close model and reset form
             const modal = document.querySelector('#modal-login');
             M.Modal.getInstance(modal).close;//close modal
-            loginForm.reset();
+            loginForm.close();
         })
     })
 }

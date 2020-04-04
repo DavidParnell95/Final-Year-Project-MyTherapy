@@ -1,4 +1,3 @@
-import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:my_therapy/Screens/Analytics/analytics.dart';
 import 'package:my_therapy/Screens/Entries/view_entries.dart';
@@ -7,6 +6,7 @@ import 'package:my_therapy/Shared/constants.dart';
 import 'package:my_therapy/Screens/Entries/add_entry.dart';
 import 'package:my_therapy/Services/auth.dart';
 import 'package:my_therapy/Shared/Settings/settings_page.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class Home extends StatelessWidget
 {
@@ -72,7 +72,10 @@ class Home extends StatelessWidget
                             onPressed: (){
                               Navigator.push(
                                   context,
-                                  new MaterialPageRoute(builder: (ctxt) => new ViewEntries()));
+                                  new MaterialPageRoute(builder: (ctxt) => ThemeConsumer(
+                                    child: ViewEntries())
+                                  )
+                              );
                             }
                         ),
                       ),
@@ -98,7 +101,10 @@ class Home extends StatelessWidget
                               //Navigate to Add Entry
                               Navigator.push(
                                 context,
-                                new MaterialPageRoute(builder: (ctxt) => new AddEntry()),
+                                new MaterialPageRoute(
+                                    builder: (ctxt) => ThemeConsumer(
+                                      child: AddEntry())
+                                ),
                               );
                             },
                           )
@@ -130,7 +136,11 @@ class Home extends StatelessWidget
                           onPressed: (){
                             Navigator.push(
                               context,
-                              new MaterialPageRoute(builder: (ctxt) => new SettingsPage()),
+                              new MaterialPageRoute(
+                                  builder: (ctxt) => ThemeConsumer(
+                                      child: SettingsPage()
+                                  )
+                              ),
                             );
                           },
                         ),
@@ -156,7 +166,12 @@ class Home extends StatelessWidget
                           ),
                           onPressed: (){
                             Navigator.push(context,
-                                new MaterialPageRoute(builder: (ctxt) => new Analytics()));
+                                new MaterialPageRoute(
+                                    builder: (ctxt) => ThemeConsumer(
+                                        child: Analytics()
+                                    )
+                                )
+                            );
                           },
                         ),
                       ),

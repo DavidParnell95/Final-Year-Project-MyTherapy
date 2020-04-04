@@ -2,10 +2,13 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:my_therapy/Services/auth.dart';
 import 'package:intl/intl.dart';
 import 'package:my_therapy/Services/database.dart';
 import 'package:my_therapy/Shared/constants.dart';
+import 'package:my_therapy/Shared/themes.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 class AddEntry extends StatefulWidget
 {
@@ -104,23 +107,28 @@ class _AddEntryState extends State<AddEntry>{
                       ),
 
                       //Add Button
-                      FlatButton(
-                        child: Text("Add Entry",style: TextStyle(color: textColor)),
+                      OutlineButton(
+                        child: Text("Add Entry"),
                         onPressed: (){
 
-                          print(entry);
-                          print(sud);
+                          print("Date: " + date);
+                          print("Entry: " + entry);
+                          print("Suds:  " + _dropSelected);
 
                           if(entry.isNotEmpty && _dropSelected != null)
                           {
                             Firestore.instance.collection('entries').add({
                               'date' : date,
-                              'suds' : _dropSelected.toString(),
+                              'suds' : int.parse(_dropSelected),
                               'entry' : entry,
                               'uid' : (DatabaseService().uid).toString(),
-                            })
-                                .then((result) =>{
-                                  Navigator.pop(context),
+                            }).then((result) =>{
+                              Fluttertoast.showToast(
+                                msg: "Entry Created",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.CENTER,
+                              ),
+                              Navigator.pop(context),
                             }).catchError((err) => print(err));
                           }
                         },

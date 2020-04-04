@@ -5,6 +5,7 @@ import 'package:preferences/preference_page.dart';
 import 'package:preferences/preference_title.dart';
 import 'package:preferences/preferences.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
+import 'package:theme_provider/theme_provider.dart';
 
 
 
@@ -14,10 +15,10 @@ class SettingsPage extends StatefulWidget
   _settingsPageState createState() => _settingsPageState();
 }
 
-class _settingsPageState extends State<SettingsPage>{
+class _settingsPageState extends State<SettingsPage> {
 
   ///App Bar Color
-  ColorSwatch _tempMainColor;//App Bar Color
+  ColorSwatch _tempMainColor; //App Bar Color
   Color _tempShadeColor;
   ColorSwatch _mainColor = Colors.blue;
   Color _shadeColor = Colors.blue[800];
@@ -25,7 +26,7 @@ class _settingsPageState extends State<SettingsPage>{
   ///Background Color
   ColorSwatch _tempBGMainColor;
   Color _tempBGShadeColor;
-  ColorSwatch _mainBGColor= Colors.grey;
+  ColorSwatch _mainBGColor = Colors.grey;
   Color _shadeBGColor = Colors.grey[500];
 
   ///Font Color
@@ -49,14 +50,14 @@ class _settingsPageState extends State<SettingsPage>{
             leading: Icon(Icons.text_fields),
             dialog: PreferenceDialog(
               [
-                RadioPreference('16','16','font_size_pref'),
-                RadioPreference('18','18','font_size_pref'),
-                RadioPreference('20','20','font_size_pref'),
-                RadioPreference('22','22','font_size_pref'),
-                RadioPreference('24','24','font_size_pref'),
-                RadioPreference('26','26','font_size_pref'),
-                RadioPreference('28','28','font_size_pref'),
-                RadioPreference('30','30','font_size_pref'),
+                RadioPreference('16', '16', 'font_size_pref'),
+                RadioPreference('18', '18', 'font_size_pref'),
+                RadioPreference('20', '20', 'font_size_pref'),
+                RadioPreference('22', '22', 'font_size_pref'),
+                RadioPreference('24', '24', 'font_size_pref'),
+                RadioPreference('26', '26', 'font_size_pref'),
+                RadioPreference('28', '28', 'font_size_pref'),
+                RadioPreference('30', '30', 'font_size_pref'),
               ],
               title: "Select font size",
               submitText: "Save",
@@ -68,236 +69,54 @@ class _settingsPageState extends State<SettingsPage>{
 
         SizedBox(height: spacing),
 
-        PreferenceTitle("Colors"),
+        PreferenceTitle("Theme"),
+
+        /// Default - Light Theme
         Card(
-              child: SwitchPreference(
-                'Low Contrast Mode',
-                'low_contrast_mode',
-                defaultVal: false,
-                onEnable: (){
-                  print("Low Contrast Mode: ENABLED");
-                  PrefService.setBool('ColoringEnabled', true);
-                  DynamicTheme.of(context).setBrightness(Brightness.dark);
-                },
-                onDisable: (){
-                  print("Low Contrast Mode: DISABLED");
-                  PrefService.setBool('ColoringEnabled', false);
-                  DynamicTheme.of(context).setBrightness(Brightness.light);
-                },
-              ),
+          child: RadioPreference(
+            'Light Theme',
+            'light',
+            'ui_theme',
+            isDefault: true,
+            onSelect: (){
+              print("Light Theme");
+              ThemeProvider.controllerOf(context).setTheme("custom_theme");
+            },
+        ),
         ),
 
-        PreferenceHider([
-          Center(
-              child: Column(
-                children: <Widget>[
-                  Card(
-                      child: FlatButton.icon(
-                        padding: EdgeInsets.symmetric(horizontal: 127.5),
-                        onPressed: _openPicker,
-                        label: Text("App Bar Color"),
-                        icon: Icon(Icons.palette),
-                      )
-                  ),
-
-                  ///Background Color
-                  Card(
-                      child: FlatButton.icon(
-                        padding: EdgeInsets.symmetric(horizontal: 115),
-                        onPressed:_openBGPicker,
-                        label: Text("Background Color"),
-                        icon: Icon(Icons.format_color_fill),
-                      )
-                  ),
-
-                  ///Text color
-                  Card(
-                    child: FlatButton.icon(
-                      padding: EdgeInsets.symmetric(horizontal: 139),
-                      onPressed: _openTXTPicker,
-                      label: Text("Text Color"),
-                      icon: Icon(Icons.format_color_text),
-                    ),
-                  )
-
-                ],
-              )
-          )
-
-        ], 'ColoringEnabled'),
-
-    ]),
-    );
-  }
-
-  /// App Bar Dialogue Boxes
-  void _openPicker() async {
-    _openDialog(
-        "App Bar Color",
-        MaterialColorPicker(
-          selectedColor: _shadeColor,
-          onColorChange: (color) => setState(() =>
-          _tempShadeColor = color,
+        /// Dark Theme
+        Card(
+          child: RadioPreference(
+            'Dark Theme',
+            'dark',
+            'ui_theme',
+            isDefault: false,
+            onSelect: (){
+              print("Dark Theme");
+              ThemeProvider.controllerOf(context).setTheme("default_dark_theme");
+            },
           ),
-          onMainColorChange: (color) => setState(() => _tempMainColor = color),
-          onBack: () => print("Back Pressed"),
-        )
-    );
-  }
-
-  void _openDialog(String title, Widget content) {
-    showDialog(
-      context: context,
-      builder: (_) {
-        return AlertDialog(
-          contentPadding: const EdgeInsets.all(6.0),
-          title: Text(title),
-          content: content,
-          actions: [
-            FlatButton(
-              child: Text('CANCEL'),
-              onPressed: Navigator.of(context).pop,
-            ),
-            FlatButton(
-              child: Text('SUBMIT'),
-              onPressed: () {
-                Navigator.of(context).pop();
-                setState(() => _mainColor = _tempMainColor);
-                setState(() => _shadeColor = _tempShadeColor);
-
-                changeAppBarColor(_mainColor);
-
-
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  //Change the App Bar color
-  void changeAppBarColor(color){
-    DynamicTheme.of(context).setThemeData(ThemeData(
-        primaryColor: Theme.of(context).primaryColor == Colors.indigo? Colors.red: color,
-    ));
-    print("App Bar change to: " + color.toString());
-  }
-
-  ///Change Background Color
-  void _openBGPicker() async{
-    _openBGDialog(
-      "Background Color",
-      MaterialColorPicker(
-        selectedColor: _shadeBGColor,
-        onColorChange: (color) => setState(() =>
-        _tempBGShadeColor = color,
         ),
-        onMainColorChange: (color) => setState(() => _tempBGMainColor =color),
-      )
+
+        /// Red Green Color Blind
+        Card(
+          child: RadioPreference(
+            'Red Green colorblind',
+            'rgb',
+            'ui_theme',
+            isDefault: false,
+            onSelect: (){
+              print("Red Green Colorblind Theme");
+              ThemeProvider.controllerOf(context).setTheme("custom_theme_rg");
+            },
+          ),
+        ),
+
+
+      ]
+      ),
     );
   }
-
-  void _openBGDialog(String title, Widget content) {
-    showDialog(
-        context: context,
-        builder: (_) {
-          return AlertDialog(
-            contentPadding: const EdgeInsets.all(6.0),
-            title: Text(title),
-            content: content,
-            actions: [
-              FlatButton(
-                child: Text('CANCEL'),
-                onPressed: Navigator
-                    .of(context)
-                    .pop,
-              ),
-              FlatButton(
-                child: Text('SUBMIT'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  setState(() => _mainBGColor = _tempBGMainColor);
-                  setState(() => _shadeBGColor = _tempBGShadeColor);
-
-                  changeBackgroundColor(_mainBGColor);
-                },
-              ),
-            ],
-          );
-        }
-    );
-  }
-
-  void changeBackgroundColor(color)
-  {
-    DynamicTheme.of(context).setThemeData(ThemeData(
-      scaffoldBackgroundColor: Theme.of(context).scaffoldBackgroundColor == Colors.indigo? Colors.red: color,
-    ));
-    print("Background changed to: " + color.toString());
-  }
-
-
-  /// Font Color
-  void _openTXTPicker() async
-  {
-    _openTXTDialog(
-      "Text Color",
-      MaterialColorPicker(
-        selectedColor: _shadeTXTColor,
-        onColorChange: (txtColor) => setState(() =>
-        _tempTXTShadeColor = txtColor),
-        onMainColorChange: (txtColor) => setState(() => _tempTXTMainColor),
-      )
-    );
-  }
-
-  void _openTXTDialog(String title, Widget content) {
-    showDialog(
-      context: context,
-      builder: (_){
-        return AlertDialog(
-          contentPadding: const EdgeInsets.all(6.0),
-          title: Text(title),
-          content: content,
-          actions: <Widget>[
-            FlatButton(
-              child: Text('CANCEL'),
-              onPressed: Navigator
-                  .of(context)
-                  .pop,
-            ),
-
-            FlatButton(
-              child: Text('Sumbit'),
-              onPressed: () {
-                Navigator.of(context).pop();
-                setState(() => _mainColor = _tempBGMainColor);
-                setState(() => _shadeBGColor = _tempBGShadeColor);
-
-                changeTextColor(_mainTXTColor);
-              }
-            )
-          ],
-        );
-      }
-    );
-  }
-
-  void changeTextColor(TXTColor) {
-    DynamicTheme.of(context).setThemeData(ThemeData(
-
-    ));
-
-    print("Text Color changed to: " + TXTColor.toString());
-  }
-
-  /// Font Size
-  void changeFontSize()
-  {
-    DynamicTheme.of(context).setThemeData(ThemeData(
-    ));
-  }
-
-
 }
+
