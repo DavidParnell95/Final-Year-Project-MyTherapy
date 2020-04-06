@@ -36,17 +36,18 @@ class _RegisterState extends State<Register>
     return loading ? Loading() : Scaffold(
       appBar: AppBar(
         elevation: 0.0,
+        backgroundColor: Colors.indigo[900],
         title: Text(
           'Apply to MyTherapy',
-          style: TextStyle(color: buttonText),
+          style: TextStyle(color: nonComplyText),
         ),
 
         actions: <Widget>[
 
           //switch to sign in
           FlatButton.icon(
-            icon: Icon(Icons.person,color: textColor),
-            label: Text('Sign In', style: TextStyle(color: textColor)),
+            icon: Icon(Icons.person, color: nonComplyText,),
+            label: Text('Sign In', style: TextStyle(color: nonComplyText),),
             onPressed: ()=> widget.toggleView(),
           ),
         ],
@@ -94,7 +95,7 @@ class _RegisterState extends State<Register>
                 width: 400.0,
                 child: Text(
                   'NOTE: APPLICATION WILL NEED TO BE APPROVED BY MY THERAPY',
-                  style: TextStyle(color: Colors.red),
+                  style: TextStyle(color: nonComply),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -103,10 +104,10 @@ class _RegisterState extends State<Register>
               //Register Button
               SizedBox(height: 20.0),
               RaisedButton(
-                color: Colors.lightBlue,
+                color: Colors.indigo[900],
                 child: Text(
                   'Register',
-                  style: TextStyle(color: textColor),
+                  style: TextStyle(color: nonComplyText),
                 ),
                 onPressed: () async{
 

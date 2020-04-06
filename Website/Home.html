@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>MyTherapy</title>
 	<meta name="Therapist">
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -15,9 +16,9 @@
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
+<body class="background">
+	<nav class="navbar navbar-expand-lg navbar-dark nav fixed-top ">
+		<div class="container nav">
 		  <a class="navbar-brand" href="Home.html"><i class="fa fa-home"></i> MyTherapy</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -41,12 +42,12 @@
 
 			  <!-- Apply -->
 			  <li class="nav-item logged-out" style="display: none;">
-				<a href="#" class="link modal-header" data-target="modal-signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Apply</a>
+				<a href="#" class="link modal-trigger" data-target="modal-signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Apply</a>
 				</li> 
 
 				<!-- Therapist Section-->
-				<li class="admin" style="display: none;">
-					<a href="therapist.html" class="link"><i class="fa fa-" aria-hidden="true">Patient Management</i></a>
+				<li class="nav-item admin" style="display: none;">
+					<a href="therapist.html" class="link"><i class="fa fa-cogs" aria-hidden="true">	Patients</i></a>
 				</li>
 
 				<!-- Super User page-->
@@ -60,11 +61,11 @@
 	
 	<!-- SIGN UP MODAL -->
 	<div id="modal-signup" class="modal">
-		<div class="modal-content">
-			<div class="modal-header">
-				<span class="close">&times;</span>
-				<h4>Sign up</h4>
+		<div class="modal-content" style="width: 30%;">
+			<div class="head">
+				<h4 class="mod-header">Sign up</h4>
 			</div>
+			
 		  
 			<!-- Email -->
 		  	<form id="signup-form">
@@ -97,7 +98,7 @@
 				<label for="signup-password">Choose password</label>
 			</div>
 
-			<button class="btn">Sign up</button>
+			<button class="matBTN">Sign up</button>
 		  </form>
 		</div>
 	  </div>
@@ -105,15 +106,22 @@
 	  <!-- Account Modal-->
 	  <div id="modal-account" class="modal">
 		<div class="modal-content" style="width: 30%;">
-			  <h4 class="mod-header">Account Details</h4>
-			  <div class="account-details"></div>
+			  
+			<div class="head">
+				<h4 class="mod-header">Account Details</h4>
+			</div>
+			
+			<div class="account-details"></div>
 		  </div>
 	  </div>
 
 	  <!-- LOGIN MODAL -->
 	  <div id="modal-login" class="modal">
 		<div class="modal-content" style="width: 30%;">
-			<h4 class="mod-header">Login</h4>
+			<div class="head">
+				<h4 class="mod-header">Login</h4>
+			</div>
+			
 
 		  <form id="login-form">
 			<div class="input-field">
@@ -132,7 +140,11 @@
 	  <!-- Create Entry -->
 	<div id="modal-create" class="modal">
 		<div class="modal-content" style="width: 30%;">
-			<h4 class="mod-header">New Entry</h4>
+			<div class="head">
+				<h4 class="mod-header">New Entry</h4>
+			</div>
+			
+		
 			<form id="create-form">
 				<p>Date: <span id="datetime"></span></p>
 				<script>

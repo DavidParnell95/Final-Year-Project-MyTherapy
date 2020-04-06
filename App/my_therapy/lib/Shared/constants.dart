@@ -13,20 +13,11 @@ const entryInputDecoration = InputDecoration(
   )
 );
 
-const appBarColor = Colors.lightBlue;
-const titleColor = Colors.white;
-
-const buttonColor = Colors.lightBlue;
-const buttonText = Colors.white;
-
-const textColor = Colors.black;
 const fontSize = 20.0;
 
 //Spacing between items
 const spacing = 20.0;
 
-const confirmColor = Colors.lightBlue;
-const cancelColor = Colors.red;
 
 //sud value
 const badSudMin =7 ;
@@ -37,4 +28,8 @@ const avgSudMin = 4;
 const avgSudMax = 6;
 
 //Chart Values
-const chartColor = Colors.blue;
+///const chartColor = Colors.indigo;
+
+//Non compliant buttons
+const nonComply = Colors.indigo;
+const nonComplyText = Colors.white;

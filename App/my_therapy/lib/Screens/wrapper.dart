@@ -11,15 +11,22 @@ class Wrapper extends StatelessWidget {
 
     //Access user data from provider
     final user = Provider.of<User>(context);
-    print("Logged in userID:  " + user.uid);
 
     // If valid user not logged in, show sign in screen
     if(user == null)
     {
+      print("NO USER");
       return Authenticate();
     }
 
+    else if(user.uid == null)
+      {
+        print("NO UID!!");
+        return Authenticate();
+      }
+
     else{
+      print("Logged in userID:  " + user.uid);
       return Home();
     }
   }

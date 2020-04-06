@@ -41,16 +41,17 @@ class _SignInState extends State<SignIn>
     //If loading show animation, otherwise show sign in form
     return loading ? Loading() : Scaffold(
       appBar: AppBar(
-        title: Text('Sign In',
-        style: TextStyle(color: textColor),
+        title: Text(
+          'Sign In',
+          style: TextStyle(color: nonComplyText),
         ),
-
+        backgroundColor: Colors.indigo[900],
         actions: <Widget>[
 
           //switch to register
           FlatButton.icon(
-              icon: Icon(Icons.person, color: textColor),
-              label: Text('Register',style: TextStyle(color: textColor)),
+              icon: Icon(Icons.person, color: nonComplyText),
+              label: Text('Register',style: TextStyle(color: nonComplyText)),
               onPressed: () =>widget.toggleView(),
           )
         ],
@@ -99,10 +100,10 @@ class _SignInState extends State<SignIn>
               //Log in button
               SizedBox(height: 20.0),
               RaisedButton(
-                color: buttonColor,
+                color: Colors.indigo[900],
                 child: Text(
                   "Sign In",
-                    style: TextStyle(color: textColor),
+                  style: TextStyle(color: nonComplyText),
                 ),
                 onPressed: () async{
 

@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:my_therapy/Shared/constants.dart';
 import 'package:theme_provider/theme_provider.dart';
 
 ///Bright Theme
@@ -28,6 +29,12 @@ AppTheme RGBAppTheme()
       primaryColor: Colors.indigo[900],
       accentColor: Colors.black,
       scaffoldBackgroundColor: Colors.yellow[300],
+      buttonTheme: ButtonThemeData(
+        buttonColor: Colors.indigo[900],
+        textTheme: ButtonTextTheme.primary,
+      ),
+
+
     ),
   );
 }

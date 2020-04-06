@@ -38,76 +38,79 @@ class _AddEntryState extends State<AddEntry>{
       appBar: AppBar(
         title: Text(
           'Add Entry',
-          style: TextStyle(color: buttonText),
         ),
       ),
 
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-        child: Form(
+        child: Card(
+          margin: EdgeInsets.only(left: 1, right: 1),
+          child: Form(
           key: _formKey,
 
           //Scroll view to prevent overflow
           child: SingleChildScrollView(
+            padding: EdgeInsets.all(20.0),
             child: Column(
-              children: <Widget>[
+                  children: <Widget>[
 
                 //Date
                 SizedBox(height: 5.0),
                 ListTile(
-                  title: Text('Date: '),
-                  trailing: Text(
-                    '$date'
+                    title: Text('Date: ', style: TextStyle(fontSize:  fontSize),),
+                    trailing: Text(
+                      '$date',
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
-                ),
 
                 //suds
                 SizedBox(height: 1.0),
                 ListTile(
-                  title: Text("SUDs"),
-                  trailing: DropdownButton(
-                    value: _dropSelected,
-                    hint: Text("SUDs:"),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        _dropSelected = newValue;
-                      });
-                    },
-                    items: <String>['1', '2', '3', '4','5',
-                      '6', '7', '8','9','10']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    },).toList(),
-                  ),
+                    title: Text("SUDs", style: TextStyle(fontSize: fontSize),),
+                    trailing: DropdownButton(
+                      value: _dropSelected,
+                      hint: Text("SUDs:",
+                        style: TextStyle(fontSize: fontSize),
+                      ),
+                      onChanged: (String newValue) {
+                        setState(() {
+                          _dropSelected = newValue;
+                        });
+                      },
+                      items: <String>['1', '2', '3', '4','5',
+                        '6', '7', '8','9','10']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      },).toList(),
+                    ),
                   ),
 
                 //entry
                 SizedBox(height: 1.0),
-                ListTile(title: Text("Entry:")),
-                TextFormField(
-                  decoration: entryInputDecoration.copyWith(hintText: "How was your day?"),
-                  maxLines: 10,
 
-                  validator: (val) => val.isEmpty ? 'Tell me, how was your day?' : null,
-                  onChanged: (val) => {
-                    setState(() => entry = val)
-                  }
-                ),
+                      ListTile(title: Text("Entry:",
+                        style: TextStyle(fontSize: fontSize),)
+                      ),
+                      TextFormField(
+                          decoration: entryInputDecoration.copyWith(hintText: "How was your day?"),
+                          maxLines: 10,
+
+                          validator: (val) => val.isEmpty ? 'Tell me, how was your day?' : null,
+                          onChanged: (val) => {
+                            setState(() => entry = val)
+                          }
+                      ),
 
                 SizedBox(height: spacing),
 
-                Center(
-                  child: Row(
+                Row(
                     children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                      ),
-
                       //Add Button
-                      OutlineButton(
+                      RaisedButton(
                         child: Text("Add Entry"),
                         onPressed: (){
 
@@ -138,8 +141,7 @@ class _AddEntryState extends State<AddEntry>{
 
                       //Clear Button
                       RaisedButton(
-                        child: Text("Cancel", style: TextStyle(color: buttonText)),
-                        color: Colors.red,
+                        child: Text("Cancel"),
                         onPressed: (){
                           entry ="";
                           Navigator.pop(context);
@@ -148,13 +150,13 @@ class _AddEntryState extends State<AddEntry>{
 
                     ],
                   ),
-                )
+                ])
 
 
-                ]),
+                ),
+              ),
+            ),
           ),
-        ),
-    ),
     );
   }
 }

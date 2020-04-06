@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:preferences/preferences.dart';
 import 'package:my_therapy/Screens/wrapper.dart';
@@ -15,6 +18,14 @@ main() async {
   await PrefService.init(prefix: 'pref_');
 
   PrefService.setDefaultValues({'user_description': 'This is my description!'});
+
+  FlutterError.onError = (FlutterErrorDetails details){
+    FlutterError.dumpErrorToConsole(details);
+    if(kReleaseMode)
+      {
+        exit(1);
+      }
+  };
 
   runApp(MyApp());
 }

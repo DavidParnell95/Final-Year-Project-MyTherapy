@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:my_therapy/Models/entry.dart';
@@ -41,8 +42,16 @@ class EntryTile extends StatelessWidget{
                 onPressed: (){
                   _showEditPanel();
                 },
-                icon: Icon(Icons.edit),
-                label: Text("Edit")
+                icon: Icon(
+                  Icons.edit,
+                  color: Colors.indigo[900],
+                ),
+                label: Text(
+                  "Edit",
+                  style: TextStyle(
+                    color: Colors.indigo[900],
+                  ),
+                )
             )
           ],
         ),

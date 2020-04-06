@@ -16,13 +16,15 @@ class Home extends StatelessWidget
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.indigo[900],
         title: Text('Home'),
         elevation: 0.0,
         actions: <Widget>[
           FlatButton.icon(
-            icon: Icon(Icons.person),
+           icon: Icon(Icons.person, color: nonComplyText,),
             label: Text(
               "Logout",
+              style: TextStyle(color: nonComplyText),
             ),
             onPressed: () async{
               await _auth.logOut();
@@ -31,9 +33,9 @@ class Home extends StatelessWidget
         ],
       ),
 
-      body: Container(
-        child:Center(
-          child: Column(
+    body: Container(
+      child:Center(
+        child: Column(
           children: <Widget>[
             SizedBox(height: 40),
 
@@ -57,11 +59,11 @@ class Home extends StatelessWidget
                         width: 150,
 
                         child: FlatButton.icon(
-                            color: Colors.lightBlue,
-                            icon: Icon(Icons.description, color: buttonText),
+                            color: Colors.indigo[900],
+                            icon: Icon(Icons.description, color: nonComplyText,),
                             label: Text(
                               "View Entries",
-                              style: TextStyle(color: buttonText),
+                              style: TextStyle(color: nonComplyText),
                             ),
 
                             //Button shape
@@ -73,7 +75,7 @@ class Home extends StatelessWidget
                               Navigator.push(
                                   context,
                                   new MaterialPageRoute(builder: (ctxt) => ThemeConsumer(
-                                    child: ViewEntries())
+                                      child: ViewEntries())
                                   )
                               );
                             }
@@ -88,9 +90,11 @@ class Home extends StatelessWidget
                           width: 150,
 
                           child: FlatButton.icon(
-                            icon: Icon(Icons.note_add),
+                            color: Colors.indigo[900],
+                            icon: Icon(Icons.note_add, color: nonComplyText,),
                             label: Text(
                               "Add Entry",
+                              style: TextStyle(color: nonComplyText),
                             ),
 
                             //Button shape
@@ -103,7 +107,7 @@ class Home extends StatelessWidget
                                 context,
                                 new MaterialPageRoute(
                                     builder: (ctxt) => ThemeConsumer(
-                                      child: AddEntry())
+                                        child: AddEntry())
                                 ),
                               );
                             },
@@ -122,11 +126,11 @@ class Home extends StatelessWidget
                         width: 150,
 
                         child: FlatButton.icon(
-                          color: Colors.lightBlue,
-                          icon: Icon(Icons.settings,color: buttonText),
+                          color: Colors.indigo[900],
+                          icon: Icon(Icons.settings,color: nonComplyText),
                           label: Text(
                             "Settings",
-                            style: TextStyle(color: buttonText),
+                            style: TextStyle(color: nonComplyText),
                           ),
 
                           //Button shape
@@ -153,11 +157,11 @@ class Home extends StatelessWidget
                         width: 150,
 
                         child: FlatButton.icon(
-                          color: Colors.lightBlue,
-                          icon: Icon(Icons.assessment,color: buttonText),
+                          color: Colors.indigo[900],
+                          icon: Icon(Icons.assessment,color: nonComplyText),
                           label: Text(
                             "Analytics",
-                            style: TextStyle(color: buttonText),
+                            style: TextStyle(color: nonComplyText),
                           ),
 
                           //Button shape
@@ -179,11 +183,11 @@ class Home extends StatelessWidget
                 ],
               ),
             ),
-            ],
+          ],
         ),
       ),
 
     ),
-    );
-  }
+  );
+}
 }

@@ -29,7 +29,7 @@ class _EditFormState extends State<EditForm>
         children: <Widget>[
           Text(
             'Edit Entry',
-            style: TextStyle(color: textColor, fontSize: fontSize),
+            style: TextStyle(fontSize: fontSize),
           ),
 
           //Date
@@ -70,9 +70,7 @@ class _EditFormState extends State<EditForm>
             children: <Widget>[
               //Confirm
               RaisedButton(
-                color: confirmColor,
-                child: Text('Update', style: TextStyle(color: buttonText,
-                    fontSize: fontSize),
+                child: Text('Update', style: TextStyle(fontSize: fontSize),
                 ),
                 onPressed: (){
                   print(sud);
@@ -84,9 +82,7 @@ class _EditFormState extends State<EditForm>
 
               //Cancel
               RaisedButton(
-                color: cancelColor,
-                child: Text('Cancel', style: TextStyle(color: buttonText,
-                    fontSize: fontSize),
+                child: Text('Cancel', style: TextStyle(fontSize: fontSize),
                 ),
                 onPressed: () async
                 {

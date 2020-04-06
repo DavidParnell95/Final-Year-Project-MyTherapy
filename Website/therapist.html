@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Therapist Zone</title>
 	<meta name="Therapist">
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="MyTherapyStyle.css">
+	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
+<body class="background">
+	<nav class="navbar navbar-expand-lg navbar-dark nav fixed-top ">
+		<div class="container nav">
 		  <a class="navbar-brand" href="Home.html"><i class="fa fa-home"></i> MyTherapy</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -34,7 +42,7 @@
 
 			  <!-- Apply -->
 			  <li class="nav-item logged-out" style="display: none;">
-				<a href="#" class="link modal-header" data-target="modal-signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Apply</a>
+				<a href="#" class="link modal-trigger" data-target="modal-signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Apply</a>
 				</li> 
 
 				<!-- Therapist Section-->
@@ -53,11 +61,11 @@
 	
 	<!-- SIGN UP MODAL -->
 	<div id="modal-signup" class="modal">
-		<div class="modal-content">
-			<div class="modal-header">
-				<span class="close">&times;</span>
-				<h4>Sign up</h4>
+		<div class="modal-content" style="width: 30%;">
+			<div class="head">
+				<h4 class="mod-header">Sign up</h4>
 			</div>
+			
 		  
 			<!-- Email -->
 		  	<form id="signup-form">
@@ -90,23 +98,31 @@
 				<label for="signup-password">Choose password</label>
 			</div>
 
-			<button class="btn">Sign up</button>
+			<button class="matBTN">Sign up</button>
 		  </form>
 		</div>
-	</div>
+	  </div>
 
 	  <!-- Account Modal-->
 	  <div id="modal-account" class="modal">
-		  <div class=" modal-content center-align">
-			  <h4>Account Details</h4>
-			  <div class="account-details"></div>
+		<div class="modal-content" style="width: 30%;">
+			  
+			<div class="head">
+				<h4 class="mod-header">Account Details</h4>
+			</div>
+			
+			<div class="account-details"></div>
 		  </div>
 	  </div>
 
 	  <!-- LOGIN MODAL -->
 	  <div id="modal-login" class="modal">
-		<div class="modal-content">
-		  <h4>Login</h4><br />
+		<div class="modal-content" style="width: 30%;">
+			<div class="head">
+				<h4 class="mod-header">Login</h4>
+			</div>
+			
+
 		  <form id="login-form">
 			<div class="input-field">
 			  <input type="email" id="login-email" required />
@@ -116,7 +132,7 @@
 			  <input type="password" id="login-password" required />
 			  <label for="login-password">Your password</label>
 			</div>
-			<button class="btn yellow darken-2 z-depth-0">Login</button>
+			<button class="matBTN">Login</button>
 		  </form>
 		</div>
 	  </div>

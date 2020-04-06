@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:my_therapy/Shared/constants.dart';
 import 'package:preferences/preference_page.dart';
 import 'package:preferences/preference_title.dart';
 import 'package:preferences/preferences.dart';
-import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:theme_provider/theme_provider.dart';
 
 
@@ -16,24 +14,6 @@ class SettingsPage extends StatefulWidget
 }
 
 class _settingsPageState extends State<SettingsPage> {
-
-  ///App Bar Color
-  ColorSwatch _tempMainColor; //App Bar Color
-  Color _tempShadeColor;
-  ColorSwatch _mainColor = Colors.blue;
-  Color _shadeColor = Colors.blue[800];
-
-  ///Background Color
-  ColorSwatch _tempBGMainColor;
-  Color _tempBGShadeColor;
-  ColorSwatch _mainBGColor = Colors.grey;
-  Color _shadeBGColor = Colors.grey[500];
-
-  ///Font Color
-  ColorSwatch _tempTXTMainColor;
-  Color _tempTXTShadeColor;
-  ColorSwatch _mainTXTColor = Colors.grey;
-  Color _shadeTXTColor = Colors.grey[900];
 
   @override
   Widget build(BuildContext context) {

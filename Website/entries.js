@@ -13,7 +13,7 @@ const setupEntries = (data) => {
             <li class="coll-container">
                     <div class="collapsible-header">
                         Date: ${entry.date} <nbsp>
-                        SUDs: ${entry.suds}
+                        <p style="float: right">SUDs: ${entry.suds}</p>
                     </div>
                 
                     <div class="collapsible-body">

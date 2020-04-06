@@ -27,10 +27,24 @@ const setupUI = (user) => {
                 const html = `
             
                 <div>
-                    <div>User: ${doc.data().name}</div>
-                    <div>${user.admin ? 'Admin' : ''}</div>
-                    <div>Institution:${doc.data().institution ? doc.data().institution != null:''}</div>
-                    <div>Institution Address:${doc.data().instAddress ? doc.data().instAddress != null: ''}</div>
+                    <div>
+                        <div class="field">User: </div>
+                        <div>${doc.data().name}</div>
+                    </div>
+                    
+                    <div>
+                        <div class="UTYPE">${user.admin ? 'Admin' : ''}</div>
+                    </div>
+
+                    <div>
+                        <div class="field">Institution:   </div>
+                        <div>${doc.data().institution ? doc.data().institution != null:''}</div>
+                    </div>
+
+                    <div>
+                        <div class="field">Institution Address:   </div>
+                        <div>${doc.data().instAddress ? doc.data().instAddress != null: ''}</div>
+                    </div>
                 </div>
                 `;
                 

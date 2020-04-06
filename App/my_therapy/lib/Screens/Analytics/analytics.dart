@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:my_therapy/Models/entry.dart';
 import 'package:my_therapy/Shared/constants.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:theme_provider/theme_provider.dart';
 
 
 class Analytics extends StatefulWidget
@@ -27,7 +28,9 @@ class _AnalyticsState extends State<Analytics>
         //Y Axis Value
         measureFn: (Entry entry, _) => entry.suds,
 
-        colorFn: (Entry entry, _) => charts.ColorUtil.fromDartColor(chartColor),
+        colorFn: (Entry entry, _) => charts.ColorUtil.fromDartColor(
+          checkTheme()
+        ),
         id: 'Suds',
         data: mydata,
         labelAccessorFn: (Entry row, _) => "${row.suds}"
@@ -98,5 +101,16 @@ class _AnalyticsState extends State<Analytics>
         ),
       ),
     );
+  }
+
+  Color checkTheme() {
+    if(AppTheme == "default_dark_theme")
+    {
+      return Colors.white;
+    }
+
+    else {
+      return Colors.indigo[900];
+    }
   }
 }

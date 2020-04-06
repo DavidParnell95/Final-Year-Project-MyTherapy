@@ -1,14 +1,31 @@
 body{
-  background: url("Images/background1.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
+  background-color: #f2ed5c;
   background-size: cover;
   -o-background-size: cover;
 }
 
+.background{
+  background-color: #f2ed5c;
+}
+
+.head{
+  background-color: #333399;
+}
+
+/***** Nav Bar *****/
+
+.nav{
+  background-color: #333399;
+  
+}
+
+.nav-item{
+  font-size: 18px;
+}
+
 .link{
   color: #ffffff;
-  background-color: #343a40;
+  background-color: #333399;
 }
 
 ul {
@@ -16,7 +33,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #333399;
 }
 
 li {
@@ -50,41 +67,10 @@ li a:hover {
 	width: 46%;
 }
 
-textarea {
-  width: 42%;
-  height: 150px;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  border: 2px solid #4CAF50;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-  font-size: 16px;
-  resize: none;
-}
-
-input[type=text] {
-  width: 35%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 2px solid #4CAF50;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  outline: none;
-}
-
-input[type=text]:focus {
-  border: 3px solid #555;
-}
-
 .space{
   height: 5opx;
 }
 
-
-.NewEntry{
-  font-size: 16;
-}
 
 .title
 {
@@ -100,61 +86,13 @@ input[type=text]:focus {
   cursor: pointer;
 }
 
-/* The Modal (background) */
-.modal-content {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-100%);
-  width: 30%;
-  padding-bottom: 20px;
-  overflow: auto;
-}
-
-.mod-header{
-  background-color: #343a40;
-  color: #ffffff;
-  padding-bottom: 5px;
-}
-
-.modal-header {
-  padding: 2px 16px;
-  float: left;
-  text-align: left;
-  background-color: #555;
-  color: white;
-}
-
-.scroll-header
-{
-  width: 50%;
-  color: #ffffff;
-  background-color: #343a40;
-  border: 1px solid black;
-}
-
-.scroll-entries
-{
-  border: 1px solid black;
-  width: 50%;
-  height: 100%;
-  overflow: scroll;
-}
-
-
-.entries
-{
-  background-color: #ffffff;
-  font-size: large;
-}
-
 .spacer{
   border-bottom: 1px solid black;
 }
 
-
+/***** Buttons *****/
 .matBTN{
-  background-color: #343a40;
+  background-color: #333399;
   color: #ffffff;
   padding: 10px 10px;
   text-align: center;
@@ -175,16 +113,123 @@ input[type=text]:focus {
 }
 
 
+.btn{
+  background-color: #333399;
+  color: #ffffff;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 10px;
+  box-shadow: 0 3px grey;
+}
+
+
+
+
+.disclaimer{
+  font-weight: bold;
+  color: #333399;
+}
+
+.CreatePatient{
+  width: 50%;
+  border-right: 1px solid black;
+}
+
+
+.card-body{
+  padding-top: 10px;
+}
+
+.createEntry{
+  width: 200px;
+}
+
+
+/***** Input *****/
+
+textarea {
+  width: 42%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+input[type=text] {
+  width: 35%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=email] {
+  width: 35%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type=password] {
+  width: 35%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+
+input[type=text]:focus {
+  border: 2px solid #333399;
+}
+
+.about-section{
+}
+
+/***** Entries *****/
+.entries
+{
+  background-color: #ffffff;
+  font-size: large;
+}
+
+.coll-container{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+}
+
+.entryBox{
+  width: 100%;
+  height: 700px;
+}
+
+
 .collapsible {
   color: black;
   padding: 18px;
-  border-bottom: 1px solid #555;
+  border-bottom: 1px solid black;
   text-align: left;
   outline: none;
   font-size: 20px;
 }
 
 .collapsible-header{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 5px;
   cursor: pointer;
   font-weight: bold;
   width: 470px;
@@ -196,25 +241,80 @@ input[type=text]:focus {
 }
 
 
-.btn{
-  background-color: #555;
+.scroll-header
+{
+  width: 50%;
   color: #ffffff;
-  padding: 10px 10px;
-  text-align: center;
-  font-size: 16px;
-  border-radius: 10px;
-  box-shadow: 0 3px grey;
+  background-color: #333399;
+  border: 1px solid black;
 }
 
+.scroll-entries
+{
+  border: 1px solid black;
+  width: 50%;
+  height: 100%;
+  overflow: scroll;
+}
+
+/*****  Modals   *****/
+/* The Modal (background) */
+.modal-content {
+  font-size: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-100%);
+  width: 30%;
+  padding-bottom: 20px;
+  overflow: auto;
+}
+
+.mod-header{
+  background-color: #333399;
+  color: #ffffff;
+  padding-bottom: 5px;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  float: left;
+  text-align: left;
+  background-color: #333399;
+  color: white;
+}
+
+.field{
+  width: 40%;
+  font-weight: bold;
+}
+
+.UTYPE{
+  font-style: italic;
+}
+
+/***** Carousel *****/
+.carousel{
+  width: 80%;
+  height: 100%;
+}
+
+.cap{
+  color: #000000;
+  background-color: #f1f1f1;
+  opacity: 0.8;
+}
+
+/***** TABS *****/
+/* Style the buttons inside the tab */
 /* Style the tab */
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #333;
+  background-color: #333399;
   color: #ffffff;
 }
 
-/* Style the buttons inside the tab */
 .tab button {
   background-color: inherit;
   color: inherit;
@@ -246,48 +346,4 @@ input[type=text]:focus {
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
-}
-
-.disclaimer{
-  font-weight: bold;
-  color: red;
-}
-
-.CreatePatient{
-  width: 50%;
-  border-right: 1px solid black;
-}
-
-.entryBox{
-  width: 100%;
-  height: 700px;
-}
-
-
-.card-body{
-  padding-top: 10px;
-}
-
-.createEntry{
-  width: 200px;
-}
-
-.carousel{
-  width: 80%;
-  height: 100%;
-}
-
-.cap{
-  color: #000000;
-  background-color: #f1f1f1;
-  opacity: 0.8;
-}
-
-.coll-container{
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border-bottom: 1px solid black;
-}
-
-.about-section{
 }
