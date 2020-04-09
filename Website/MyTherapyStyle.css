@@ -123,9 +123,6 @@ li a:hover {
   box-shadow: 0 3px grey;
 }
 
-
-
-
 .disclaimer{
   font-weight: bold;
   color: #333399;
@@ -196,6 +193,7 @@ input[type=text]:focus {
 }
 
 .about-section{
+  width: 70%;
 }
 
 /***** Entries *****/
@@ -203,6 +201,10 @@ input[type=text]:focus {
 {
   background-color: #ffffff;
   font-size: large;
+}
+
+.EntriesContainer{
+  width:100%;
 }
 
 .coll-container{
@@ -214,6 +216,7 @@ input[type=text]:focus {
 .entryBox{
   width: 100%;
   height: 700px;
+  float: left;
 }
 
 
@@ -243,7 +246,7 @@ input[type=text]:focus {
 
 .scroll-header
 {
-  width: 50%;
+  width: 100%;
   color: #ffffff;
   background-color: #333399;
   border: 1px solid black;
@@ -252,11 +255,20 @@ input[type=text]:focus {
 .scroll-entries
 {
   border: 1px solid black;
-  width: 50%;
+  width: 100%;
   height: 100%;
   overflow: scroll;
 }
 
+.chartBox{
+  width: 40%;
+  height: 700px;
+  float: right;
+}
+
+.chartBody{
+  
+}
 /*****  Modals   *****/
 /* The Modal (background) */
 .modal-content {

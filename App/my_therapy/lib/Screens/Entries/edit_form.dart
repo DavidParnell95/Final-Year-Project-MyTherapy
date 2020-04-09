@@ -73,6 +73,7 @@ class _EditFormState extends State<EditForm>
                 child: Text('Update', style: TextStyle(fontSize: fontSize),
                 ),
                 onPressed: (){
+
                   print(sud);
                   print(_currentEntry);
                 },

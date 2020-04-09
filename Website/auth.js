@@ -113,7 +113,7 @@ if(signupForm)
         e.preventDefault();
 
         //Get user info from form
-        const email = signupForm['signup-email'].value;//emailconst instAdd = signupForm['signup-InstAdd'].value;//institution address
+        const email = signupForm['signup-email'].value;//emailconst 
         const passwrd = signupForm['signup-password'].value;//password
 
         //console.log(name,email,inst,instAdd);
@@ -151,7 +151,7 @@ if(newPatientForm)
 
         e.preventDefault();
         //Get user info from form
-        const email = newPatientForm['patient-email'].value;//emailconst instAdd = signupForm['signup-InstAdd'].value;//institution address
+        const email = newPatientForm['patient-email'].value;//email
         const passwrd = newPatientForm['patient-password'].value;//password
 
         console.log(email);

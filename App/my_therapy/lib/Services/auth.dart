@@ -30,28 +30,6 @@ class AuthService
         .map(_userFromFirebaseUser);
   }
 
-  //Sign in Anon
-  //Async task
-  Future signInAnon() async
-  {
-    try
-    {
-      //Makes request for authentication, awaits result.
-      //System knows what to connect to due to the google-services.json file
-      AuthResult result = await _auth.signInAnonymously();
-      FirebaseUser user = result.user;//Resulting user becomes firebase user
-
-      return _userFromFirebaseUser(user);//Return custom user object
-    }
-
-    //Request Failed
-    catch(e)
-    {
-      print((e).toString());
-      return null;
-    }
-  }
-
   //Sign in with email & password
   Future signInWithEmailAndPassword(String email, String password) async{
     try{
