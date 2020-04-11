@@ -12,7 +12,10 @@ AppTheme customAppTheme(){
       accentColor: Colors.black,
       primaryColor: Colors.indigo[900],
       scaffoldBackgroundColor: Colors.white,
-      buttonColor: Colors.indigo[900],
+      buttonTheme: ButtonThemeData(
+        buttonColor: Colors.indigo[900],
+        textTheme: ButtonTextTheme.primary
+      ),
       dialogBackgroundColor: Colors.white,
 
     ),

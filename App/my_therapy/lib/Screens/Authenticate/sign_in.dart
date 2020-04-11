@@ -11,10 +11,6 @@ import 'package:my_therapy/Shared/loading.dart';
 
 class SignIn extends StatefulWidget
 {
-  //inherit toggleView from authenticate.dart
-  final Function toggleView;
-  SignIn({ this.toggleView });
-
   @override
   _SignInState createState() => _SignInState();
 
@@ -46,15 +42,6 @@ class _SignInState extends State<SignIn>
           style: TextStyle(color: nonComplyText),
         ),
         backgroundColor: Colors.indigo[900],
-        actions: <Widget>[
-
-          //switch to register
-          FlatButton.icon(
-              icon: Icon(Icons.person, color: nonComplyText),
-              label: Text('Register',style: TextStyle(color: nonComplyText)),
-              onPressed: () =>widget.toggleView(),
-          )
-        ],
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),

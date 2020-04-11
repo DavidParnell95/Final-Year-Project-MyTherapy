@@ -28,16 +28,20 @@ class EntryTile extends StatelessWidget{
       padding: EdgeInsets.only(top: 8.0),
 
       child: Card(
-        margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
+        margin: EdgeInsets.fromLTRB(20.0, 8.0, 20.0, 8.0),
         child: ExpansionTile(
           leading: Icon(
             checkMood(),
             size: 40.0,
           ),
-          title: Text(entry.date + "                " +entry.suds.toString() ),
+          title: Text(entry.date + "\n" +entry.suds.toString() ,
+          style: TextStyle(fontSize: 18),),
           trailing: Icon(Icons.arrow_drop_down),
           children: <Widget>[
-            Text(entry.entry),
+            Text(
+              entry.entry,
+              style: TextStyle(fontSize: 18),
+            ),
             FlatButton.icon(
                 onPressed: (){
                   _showEditPanel();
