@@ -34,10 +34,22 @@
     <!-- link that opens popup -->
 
     <!-- form itself end-->
-    <form id="test-form" class="white-popup-block mfp-hide">
+    <form id="login-form" class="white-popup-block mfp-hide">
         <div class="popup_box ">
             <div class="popup_inner">
-                <h3>Login</h3>    
+                <h3>Login</h3>
+                
+                <form id="login">
+                    <div class="input-field">
+                        <label for="login-email">Email address</label>
+                        <input type="email" id="login-email" required />
+                    </div>
+                    <div class="input-field">
+                      <label for="login-password">Your password</label>
+                      <input type="password" id="login-password" required />
+                    </div>
+                    <button class="submit_btn">Login</button>
+                </form>
             </div>
         </div>
     </form>
