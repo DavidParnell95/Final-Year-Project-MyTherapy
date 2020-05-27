@@ -33,7 +33,7 @@
         <%- include('../partials/footer.ejs') %>
     <!-- link that opens popup -->
 
-    <!-- form itself end-->
+    <!-- Login Form-->
     <form id="login-form" class="white-popup-block mfp-hide">
         <div class="popup_box ">
             <div class="popup_inner">
@@ -53,7 +53,59 @@
             </div>
         </div>
     </form>
-    <!-- form itself end -->
+    <!-- Login Form end -->
+
+    <!-- Registration Form -->
+    <form id="register-form" class="white-popup-block mfp-hide">
+        <div class="popup_box ">
+            <div class="popup_inner">
+                <h3>Register</h3>
+                
+                <form id="register">
+                    <!-- Email-->
+                    <div class="input-field">
+                        <label for="reg-email">Email address</label>
+                        <input type="email" id="reg-email" required />
+                    </div>
+
+                    <!-- Name -->
+                    <div class="input-field">
+                        <label for="reg-name">Name</label>
+                        <input type="text" id="reg-name" required />
+                    </div>
+
+                    <!-- Institution -->
+                    <div class="input-field">
+                        <label for="reg-inst">Institution</label>
+                        <input type="text" id="reg-inst" required />
+                    </div>
+
+                    <!-- Institution Address-->
+                    <div class="input-field">
+                        <label for="reg-inst-addr">Institution Address</label>
+                        <input type="text" id="reg-inst-addr" required />
+                    </div>
+
+                    <!-- Password-->
+                    <div class="input-field">
+                      <label for="reg-password">Password</label>
+                      <input type="password" id="reg-password" required />
+                      <span id="warn-mismatch"></span>
+                    </div>
+
+                    <!-- Confirm Password-->
+                    <div class="input-field">
+                        <label for="conf-password">Confirm Password</label>
+                        <input type="password" id="conf-password" required />
+                        <span id="warn-mismatch"></span>
+                      </div>
+
+                    <button class="submit_btn">Register</button>
+                </form>
+            </div>
+        </div>
+    </form>
+    <!-- Registration Form end -->
 
     <!-- JS here -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
@@ -83,6 +135,24 @@
     <script src="js/mail-script.js"></script>
 
     <script src="js/main.js"></script>
+
+    <script>
+        //Validate password fields
+        //Triggers on keyup (user stops typing) 
+        $('#reg-password,#conf-password').on('keyup', function(){
+
+            //IF passwords match, present message informing user
+            if($('#reg-password').val() == $('#conf-password').val())
+            {
+                $('#warn-mismatch').html("Passwords match").css("color",'green');
+            }
+
+            //Else tell them no match
+            else{
+                $('#warn-mismatch').html("Passwords don't match").css("color",'red');
+            }
+        })
+    </script>
 
     </body>
 </html>

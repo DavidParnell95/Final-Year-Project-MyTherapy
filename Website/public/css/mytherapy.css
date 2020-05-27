@@ -141,7 +141,7 @@ label {
     color: #000000;
     font-weight: 500;
     font-size: 26px;
-    padding-top: 10px;
+    padding-top: 60px;
 }
 
 .about_mytherapy {
@@ -198,6 +198,7 @@ label {
 /* line 1, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_service.scss */
 .emergency_area {
   background: #f0f0f0;
+  padding-bottom: 30px;
 }
 
 /* line 3, C:/Users/SPN Graphics/Desktop/CL September/210 Medical/HTML/scss/_service.scss */
@@ -244,6 +245,11 @@ label {
   color: #000000;
   margin-top: 10px;
   margin-bottom: 26px;
+}
+
+.middle-service{
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
