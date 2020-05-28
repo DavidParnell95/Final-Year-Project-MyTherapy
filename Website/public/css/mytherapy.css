@@ -13,7 +13,7 @@
   background: #fff;
 }
 
-.header-area .main-header-area .Login_Register .login_btn a {
+.login_btn a {
   background: #333399;
   padding: 12px 26px;
   font-size: 14px;
@@ -27,7 +27,7 @@
 
 /*** Modals ***/
 /* Login Modal */
-#login-form {
+.modal-form {
   display: inline-block;
   margin: auto;
   text-align: center;
@@ -40,16 +40,18 @@
   transform: translate(-50%, -50%);
 }
 
-#login-form .mfp-close-btn-in .mfp-close {
+.modal-form .mfp-close-btn-in .mfp-close {
   color: #333;
   display: none !important;
 }
 
-#login-form button.mfp-close {
+.modal-form button.mfp-close {
   display: none !important;
 }
 
 /* Register Modal*/
+
+/* New Entry
 
 /* Shared elements*/
 label {
@@ -70,6 +72,11 @@ label {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+}
+
+.input-field{
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .popup_box {
@@ -420,3 +427,10 @@ label {
   .footer_head{
       color: white;
   }
+
+/* Entries page */ 
+.entries-box{
+  border-left: 1px solid #919191;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
