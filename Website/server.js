@@ -4,6 +4,13 @@ const expressLayouts = require('express-ejs-layouts');
 var app = express();
 
 var bodyParser = require('body-parser');
+
+var firebase = require('firebase/app');
+require('firebase/auth');
+require('firebase/firestore');
+
+var fbaseApp = firebase.initializeApp({});
+
 const indexRouter = require('./routes/index');
 const entryRouter = require('./routes/entries');
 
