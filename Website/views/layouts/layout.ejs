@@ -21,6 +21,12 @@
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/mytherapy.css">
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+        <!-- JS -->
+        <!-- Firebase Packages-->
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js" defer></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js" defer></script>    
     </head>
 
     <body>
@@ -137,6 +143,7 @@
 
     <script src="js/main.js"></script>
 
+
     <script>
         //Validate password fields
         //Triggers on keyup (user stops typing) 
@@ -153,7 +160,60 @@
                 $('#warn-mismatch').html("Passwords don't match").css("color",'red');
             }
         })
-    </script>
 
+        //Firebase and auth set up
+        window.addEventListener("DOMContentLoaded", () => {
+            //Firebase Setup
+           const firebaseConfig = {
+               apiKey: "AIzaSyA0gpT-psrA1oaXFmp6V4snnjWsg4xIx8w",
+               authDomain: "mytherapy-8776f.firebaseapp.com",
+               databaseURL: "https://mytherapy-8776f.firebaseio.com",
+               projectId: "mytherapy-8776f",
+               storageBucket: "mytherapy-8776f.appspot.com",
+               messagingSenderId: "976009179852",
+               appId: "1:976009179852:web:dec8630a2c7782e2f5c869",
+               measurementId: "G-RT4VGFYJZH"
+            };
+        
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+            firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
+
+            document.getElementById("login-form").addEventListener("submit",(event) =>{
+                event.preventDefault();
+
+                //Get form values
+                const email = event.target.email.value;
+                const password = event.target.password.value;
+
+                console.log(email + password);
+
+                //Pass to firebase
+                firebase.auth().signInWithEmailAndPassword(email,password).then(
+                    ({user}) => {
+                        return user.getIdToken().then((idToken) =>{
+                            return fetch("/login",{
+                                method: "POST",
+                                headers: {
+                                    Accept: "application/json",
+                                    "Content-Type": "application/json",
+                                    "CSRF-Token": Cookies.get("XSRF-TOKEN"),
+                                },
+
+                                body:JSON.stringify({idToken}),
+                            });
+                        });
+                    }).then(() =>{
+                        return firebase.auth.signOut();
+                    })
+                    .then(() =>{
+                        //direct to entries page
+                        window.location.assign("/entries");
+                    });
+                return false;
+            });
+    })
+    </script>
     </body>
 </html>
