@@ -180,7 +180,11 @@
 
             firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
 
-            document.getElementById("login-form").addEventListener("submit",(event) =>{
+            if(document.getElementById("login"))
+            {
+                console.log("LOGIN FORM: true");
+
+                document.getElementById("login").addEventListener("submit",(event) =>{
                 event.preventDefault();
 
                 //Get form values
@@ -193,7 +197,7 @@
                 firebase.auth().signInWithEmailAndPassword(email,password).then(
                     ({user}) => {
                         return user.getIdToken().then((idToken) =>{
-                            return fetch("/login",{
+                            return fetch("/sessionLogin",{
                                 method: "POST",
                                 headers: {
                                     Accept: "application/json",
@@ -213,6 +217,8 @@
                     });
                 return false;
             });
+            }
+           
     })
     </script>
     </body>

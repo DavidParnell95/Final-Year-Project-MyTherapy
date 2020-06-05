@@ -434,3 +434,7 @@ label {
   padding-top: 10px;
   padding-bottom: 30px;
 }
+
+.submit_btn{
+  cursor: pointer;
+}

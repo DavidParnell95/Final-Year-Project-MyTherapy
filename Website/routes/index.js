@@ -1,12 +1,13 @@
 const express = require('express');
 const cookieParser = require("cookie-parser");
-const csrf = require("csurf");
+const bodyParser = require('body-parser');
+const csurf = require("csurf");
 
 //Number of days cookie should be valid for
 var expireDays = 50;
 
 const admin = require('firebase-admin');
-const serviceAccount = require("./serviceAccountKey.json");
+const serviceAccount = require("../serviceAccountKey.json");
 
 /***** AUTHENTICATION ROUTES *****/
 //Firebase init
@@ -17,9 +18,13 @@ admin.initializeApp({
 
 const router = express.Router();
 
-const csrfMW = csrf({cookie : true})
+const csurfMW = csurf({cookie : true})
 
 router.use(express.urlencoded({extended: false}))
+router.use(bodyParser.json());
+router.use(cookieParser());
+router.use(csurfMW);
+
 
 //Takes all requests and sets cookies
 router.all("*", (req,res,next) =>{
@@ -32,7 +37,7 @@ router.get('/', function(req,res){
 })
 
 //Login
-router.post("/login", (req,res) => {
+router.post("/sessionLogin", (req,res) => {
     const idToken = req.body.idToken.toString();//Pass id token as string
     
     // expires in: secs * mins * days then convert to miliseconds by *1000 
