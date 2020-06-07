@@ -1,0 +1,43 @@
+<h3>Register</h3>
+                
+<form id="register">
+    <!-- Email-->
+    <div class="input-field">
+        <label for="reg-email">Email address</label>
+        <input type="email" id="reg-email" autocomplete="on" required />
+    </div>
+
+    <!-- Name -->
+    <div class="input-field">
+        <label for="reg-name">Name</label>
+        <input type="text" id="reg-name" required />
+    </div>
+
+    <!-- Institution -->
+    <div class="input-field">
+        <label for="reg-inst">Institution</label>
+        <input type="text" id="reg-inst" required />
+    </div>
+
+    <!-- Institution Address-->
+    <div class="input-field">
+        <label for="reg-inst-addr">Institution Address</label>
+        <input type="text" id="reg-inst-addr" required />
+    </div>
+
+    <!-- Password-->
+    <div class="input-field">
+        <label for="reg-password">Password</label>
+        <input type="password" id="reg-password" autocomplete="off" required />
+        <span id="warn-mismatch"></span>
+    </div>
+
+    <!-- Confirm Password-->
+    <div class="input-field">
+        <label for="conf-password">Confirm Password</label>
+        <input type="password" id="conf-password" autocomplete="off" required />
+        <span id="warn-mismatch"></span>
+    </div>
+
+    <button class="submit_btn">Register</button>
+</form>
