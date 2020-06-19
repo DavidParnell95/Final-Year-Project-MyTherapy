@@ -44,7 +44,7 @@
     <form id="login-form" class="white-popup-block mfp-hide modal-form">
         <div class="popup_box ">
             <div class="popup_inner">
-                <%- include('../partials/login-form.ejs') %> 
+                <%- include('../partials/auth/login-form.ejs') %> 
             </div>
         </div>
     </form>
@@ -54,7 +54,7 @@
     <form id="register-form" class="white-popup-block mfp-hide modal-form">
         <div class="popup_box ">
             <div class="popup_inner">
-                <%- include('../partials/register-form.ejs') %>
+                <%- include('../partials/auth/register-form.ejs') %>
             </div>
         </div>
     </form>
@@ -63,33 +63,33 @@
     <!-- JS here -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/ajax-form.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/jquery.counterup.min.js"></script>
-    <script src="js/imagesloaded.pkgd.min.js"></script>
-    <script src="js/scrollIt.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/nice-select.min.js"></script>
-    <script src="js/jquery.slicknav.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/gijgo.min.js"></script>
+    <script src="js/imported/popper.min.js"></script>
+    <script src="js/imported/bootstrap.min.js"></script>
+    <script src="js/imported/owl.carousel.min.js"></script>
+    <script src="js/imported/isotope.pkgd.min.js"></script>
+    <script src="js/imported/ajax-form.js"></script>
+    <script src="js/imported/waypoints.min.js"></script>
+    <script src="js/imported/jquery.counterup.min.js"></script>
+    <script src="js/imported/imagesloaded.pkgd.min.js"></script>
+    <script src="js/imported/scrollIt.js"></script>
+    <script src="js/imported/jquery.scrollUp.min.js"></script>
+    <script src="js/imported/wow.min.js"></script>
+    <script src="js/imported/nice-select.min.js"></script>
+    <script src="js/imported/jquery.slicknav.min.js"></script>
+    <script src="js/imported/jquery.magnific-popup.min.js"></script>
+    <script src="js/imported/plugins.js"></script>
+    <script src="js/imported/gijgo.min.js"></script>
 
     <!--contact js-->
-    <script src="js/contact.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
+    <script src="js/imported/jquery.ajaxchimp.min.js"></script>
+    <script src="js/imported/jquery.form.js"></script>
+    <script src="js/imported/jquery.validate.min.js"></script>
 
-    <script src="js/main.js"></script>
-    <script src="js/menu.js"></script>
-
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-functions.js"></script>
 
     <script>
         //Validate password fields
@@ -109,65 +109,35 @@
         })
 
         //Firebase and auth set up
-        window.addEventListener("DOMContentLoaded", () => {
-            //Firebase Setup
-           const firebaseConfig = {
-               apiKey: "AIzaSyA0gpT-psrA1oaXFmp6V4snnjWsg4xIx8w",
-               authDomain: "mytherapy-8776f.firebaseapp.com",
-               databaseURL: "https://mytherapy-8776f.firebaseio.com",
-               projectId: "mytherapy-8776f",
-               storageBucket: "mytherapy-8776f.appspot.com",
-               messagingSenderId: "976009179852",
-               appId: "1:976009179852:web:dec8630a2c7782e2f5c869",
-               measurementId: "G-RT4VGFYJZH"
-            };
-        
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
+        var firebaseConfig = {
+   		    apiKey: "AIzaSyA0gpT-psrA1oaXFmp6V4snnjWsg4xIx8w",
+    	    authDomain: "mytherapy-8776f.firebaseapp.com",
+    	    databaseURL: "https://mytherapy-8776f.firebaseio.com",
+    	    projectId: "mytherapy-8776f",
+    	    //storageBucket: "mytherapy-8776f.appspot.com",
+    	    //messagingSenderId: "976009179852",
+    	    appId: "1:976009179852:web:dec8630a2c7782e2f5c869",
+    	    //measurementId: "G-RT4VGFYJZH"
+	    };
+  
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
 
-            firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
+		//Make auth and firebase references
+		const auth = firebase.auth();
+		const db = firebase.firestore();
+		const functions = firebase.functions();
 
-            if(document.getElementById("login"))
-            {
-                console.log("LOGIN FORM: true");
+		//Update firestore settings
+		db.settings({
+    		timestampsInSnapshots: true
+		});
 
-                document.getElementById("login").addEventListener("submit",(event) =>{
-                event.preventDefault();
-
-                //Get form values
-                const email = event.target.email.value;
-                const password = event.target.password.value;
-
-                console.log(email + password);
-
-                //Pass to firebase
-                firebase.auth().signInWithEmailAndPassword(email,password).then(
-                    ({user}) => {
-                        return user.getIdToken().then((idToken) =>{
-                            return fetch("/sessionLogin",{
-                                method: "POST",
-                                headers: {
-                                    Accept: "application/json",
-                                    "Content-Type": "application/json",
-                                    "CSRF-Token": Cookies.get("XSRF-TOKEN"),
-                                },
-
-                                body:JSON.stringify({idToken}),
-                            });
-                        });
-                    }).then(() =>{
-                        console.log("Logged in: " );
-                        return firebase.auth.signOut();
-                    })
-                    .then(() =>{
-                        //direct to entries page
-                        window.location.assign("/entries");
-                    });
-                return false;
-            });
-            }
-           
-    })
     </script>
+
+    <script src="js/auth.js"></script>
+    <script src="js/imported/main.js"></script>
+    <script src="js/menu.js"></script>
+
     </body>
 </html>

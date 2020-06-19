@@ -1,0 +1,42 @@
+<h2>New Entry</h2>
+            
+<p class="date">Date: <span id="date"></span></p>
+                
+<!-- Script to get current date-->
+<script>
+    var dt = new Date();
+    document.getElementById("date").innerHTML = dt.toLocaleDateString();
+</script>
+
+<div class="input-field">
+    SUD: 
+    <select name="suds"  id='suds' required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>                        
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+</div>
+                
+Summary:<br>
+<div class="input-field">
+    <textarea placeholder="How was your day?" 
+        id="summary" wrap="off"
+        class="text-area" rows="7" cols="40" 
+        required>
+    </textarea>
+</div>
+                
+<button class="submit_btn">Save Entry</button>
+
+<script>
+    $(function(){
+        $('#summary').autogrow();
+    });
+</script>

@@ -1,0 +1,50 @@
+<!-- logged in home page-->
+<!-- Header banner-->
+<div class="row">
+    <div class="col-sm-10">
+        <h2 class="title-headings welcome-user">Welcome </h2>
+    </div>
+    
+    <div class="col-sm-2">
+        <a href="#help-box" class="hollow_button popup-with-form"><i class="icon-info"></i></a>
+    </div>
+
+</div>
+
+<!-- Main Content Body -->
+<div class="row" style="padding-bottom: 30px; padding-left: 10px;">
+    <!-- Sidebar -->
+    <div class="col-sm-2">
+        <div class="login_btn d-none d-lg-block">
+            <a class="popup-with-form" href="#entry-form"><i class="icon-plus"></i> New Entry</a>
+        </div>
+    </div>
+
+    <!-- Entry list area-->
+    <div class="col-sm-8 entries-box">
+        <%- include('../partials/entries/entry-list.ejs') %> 
+    </div>
+
+    <!-- Spacer -->
+    <div class="col-sm-2"></div>
+
+</div>
+
+<!-- Help Box-->
+<form id="help-box" class="white-popup-block mfp-hide modal-form">
+    <div class="popup_box ">
+        <div class="popup_inner">
+            <%- include('../partials/entries/help-box.ejs') %>
+        </div>
+    </div>
+</form>
+
+<!-- New Entry Form -->
+<form id="entry-form" class="white-popup-block mfp-hide modal-form">
+    <div class="popup_box ">
+        <div class="popup_inner">
+            <%- include('../partials/entries/new-entry-form.ejs') %>
+        </div>
+    </div>
+</form>
+

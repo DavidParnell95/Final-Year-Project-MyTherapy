@@ -1,104 +1,11 @@
-
-<!-- Header carousel -->
-<div class="slider_area">
-    <div class="slider_active owl-carousel">
-
-        <!-- Carousel element 1 - About MyTherapy -->
-        <div class="single_slider  d-flex align-items-center slider_bg_1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="slider_text ">
-                            <h3> <span>MyTherapy</span></h3>
-                            <p>
-                                My Therapy is a tool that can be used as a tool <br> 
-                                by therapists and patients, to gather information <br>
-                                between sessions.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Carousel element 2 - about CBT -->
-        <div class="single_slider  d-flex align-items-center slider_bg_2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="slider_text ">
-                            <h3> <span>Based on CBT</span></h3>
-                            <p>In healthcare sector, service excellence is the facility of <br> the hospital as
-                                healthcare service provider to consistently.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Logged Out -->
+<div class="logged-out" style="display: none;">
+    <%- include('partials/Home-logged-out.ejs') %>
 </div>
 
-<!-- About section -->
-<div class="about_mytherapy">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-6 col-lg-6">
-                <div class="aboutImage">
-                    <img src="../images/about/cbt.jpg" alt="Cognitive Behavioral Therapy explanation">
-                </div>
-            </div>
-
-            <div class="col-xl-6 col-lg-6">
-                <div class="about_mytherapy_info">
-                    <h2>Welcome to MyTherapy</h2>
-                    <h3>Better therapy experience for<br>
-                        you and your therapist</h3>
-                    <p>
-                        MyTherapy is a tool for therapists and patients that can 
-                        help improve the therapy experience. MyTherapy uses digital 
-                        CBT worksheets to gather raw emotional, that would otherwise be
-                        lost if using paper worksheets as patients do not always have access to them.
-                    </p>
-
-                    <h5>MyTherapy is based on the concept of Cognitive Behavioral Therapy</h5>
-                    <p>
-                        Cognitive Behavioral Therapy (CBT) links thought, behavior and emotion to
-                        find the root of the patients problems and help them enact real change in 
-                        their lives to solve those problems.
-                    </p>
-                    <a href="https://mentalhealth.ie/cognitive-behavioural-therapy" class="hollow_button">Learn More About CBT</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- How MyTHerapy Works section -->
-<div class="about_mytherapy" style="padding-bottom: 60px;">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-6 col-lg-6">
-                <div class="aboutImage">
-                    <img src="../images/about/pc-paper.jpg" alt="">
-                </div>
-            </div>
-
-            <div class="col-xl-6 col-lg-6">
-                <div class="about_mytherapy_info">
-                    <h2>How does MyTherapy work?</h2>
-                    <p>
-                        MyTherapy allows therapists to create a MyTherapy account for their patients to use. 
-                        Using this account the patient can fill in a digital CBT worksheet on their phone, PC 
-                        or any web capable device. Completed worksheets are stored in a real-time database, allowing 
-                        therapists and patient to view them in real-time.
-                        Over time, a kind of virtual diary is created consisting of completed worksheets. This can 
-                        be used to help establish the link between patients thoughts, emotions and behavior and help 
-                        patients enact change to solve their problems
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Logged In -->
+<div class="logged-in" style="display: block;">
+    <%- include('partials/Home-logged-in.ejs') %> 
 </div>
 
 <!-- Emergency Links -->
