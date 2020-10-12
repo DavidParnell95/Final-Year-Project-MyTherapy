@@ -17,6 +17,10 @@ AppTheme customAppTheme(){
         textTheme: ButtonTextTheme.primary
       ),
       dialogBackgroundColor: Colors.white,
+        textTheme: TextTheme(
+            caption: TextStyle(fontSize: 14.0, color: Colors.indigo[900])
+        )
+
 
     ),
   );
@@ -36,6 +40,9 @@ AppTheme RGBAppTheme()
         buttonColor: Colors.indigo[900],
         textTheme: ButtonTextTheme.primary,
       ),
+      textTheme: TextTheme(
+        caption: TextStyle(fontSize: 14.0, color: Colors.indigo[900])
+      )
 
 
     ),

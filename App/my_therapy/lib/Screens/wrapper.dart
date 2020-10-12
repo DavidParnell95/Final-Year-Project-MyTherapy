@@ -16,13 +16,15 @@ class Wrapper extends StatelessWidget {
     if(user == null)
     {
       print("NO USER");
-      return Authenticate();
+      return Home();
+      //return Authenticate();
     }
 
     else if(user.uid == null)
       {
         print("NO UID!!");
-        return Authenticate();
+        return Home();
+        //return Authenticate();
       }
 
     else{
